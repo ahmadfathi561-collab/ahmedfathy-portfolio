@@ -341,7 +341,7 @@
         </div>
     </section>
 
-    <!-- أداة المساعد الذكي المتجاوب والفاهم -->
+    <!-- أداة المساعد الذكي الخارق (مع ربط تخزين الأسئلة أوتوماتيك بـ Google Sheets) -->
     <div id="aiChatWidget" class="fixed bottom-5 right-5 z-50">
         <!-- زر فتح الشات -->
         <button onclick="toggleAiChat()" id="aiChatBtn" class="w-14 h-14 bg-primaryBlue text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all border border-blue-400/30">
@@ -360,7 +360,7 @@
             
             <div id="aiChatMessages" class="p-3 h-64 overflow-y-auto space-y-3 text-xs sm:text-sm text-slate-200 bg-slate-950/60">
                 <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]">
-                    أهلاً بك! أنا مستشارك التقني الذكي. اسألني عن أي نظام برمجي، الأسعار، أو الأنسب لشركتك وهرد عليك فوراً!
+                    أهلاً بك! أنا مساعد المهندس أحمد فتحي الذكي. اسألني عن أي تفاصيل، فوائد، أسعار، أو مميزات أنظمتنا وهرد عليك فوراً!
                 </div>
             </div>
 
@@ -534,17 +534,16 @@
             }
         };
 
-        // 1. قراءة اللغة المحفوظة من الـ LocalStorage (ثابتة ومش بتتغير لوحدها أبداً)
+        // إدارة اللغة بشكل دائم وثابت عبر LocalStorage
         let currentLang = localStorage.getItem('site_lang') || 'ar';
 
-        // تطبيق اللغة فور فتح الصفحة
         window.addEventListener('DOMContentLoaded', () => {
             applyLanguage(currentLang);
         });
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            localStorage.setItem('site_lang', currentLang); // حفظ دائم لاختيار العميل
+            localStorage.setItem('site_lang', currentLang);
             applyLanguage(currentLang);
         }
 
@@ -576,7 +575,7 @@
             document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
         }
 
-        // 2. مستشار ذكي متجاوب وفعال يفهم العميل ويرد صح، ولو عطل يحوله للمهندس أحمد
+        // مستشار ذكي متطور ومتجاوب مع تخزين الأسئلة أوتوماتيكياً في Google Sheets
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             box.classList.toggle('hidden');
@@ -599,21 +598,33 @@
             input.value = '';
             chatMsgs.scrollTop = chatMsgs.scrollHeight;
 
+            // إرسال السؤال أوتوماتيكياً لملف Google Sheets في الخلفية
+            const sheetApiUrl = "https://script.google.com/macros/s/AKfycbxNhHMKf64dDVhV4icLBslWJZHFDfLjpBaSC6cANUFXoDJ94RmXyKjfTP-qgHcEAqRgJg/exec";
+            fetch(sheetApiUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: msg })
+            }).catch(err => console.log("Sheet log error:", err));
+
             setTimeout(() => {
                 let reply = "";
                 const text = msg.toLowerCase();
 
-                if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس")) {
-                    reply = "أسعار الأنظمة عندنا مخصصة ومصممة حسب حجم نشاطك ومتطلباتك عشان تدفع في اللي يفيدك بجد. عشان نديك سعر دقيق ومناسب، تواصل معنا مباشرة مع المهندس أحمد فتحي.";
-                } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("بيع")) {
-                    reply = "ممتاز! عندنا أنظمة ويب متكاملة لإدارة المعارض والمتاجر، بتدير المخازن، الأقساط، الكاش، وحركة الأرباح بدقة. تحب نبعتلك تفاصيل أكتر؟";
-                } else if (text.includes("حجز") || text.includes("مواعيد") || text.includes("عيادة") || text.includes("مركز")) {
-                    reply = "بنصمم أنظمة حجوزات ومواعيد ذكية جداً بتنظم جدول العملاء وتأكد المواعيد تلقائياً بدون أي تداخل أو نسيان.";
-                } else if (text.includes("لوحة") || text.includes("تحكم") || text.includes("إدارة موظفين")) {
-                    reply = "لوحات التحكم (Dashboards) اللي بنطورها بتتيح لك متابعة سير العمل وتقارير الأرباح لحظة بلحظة وبكل سهولة.";
+                if (text.includes("مين") || text.includes("من انتم") || text.includes("انت مين") || text.includes("عرفنا")) {
+                    reply = "إحنا منصة متخصصة في هندسة الويب وتطوير الأنظمة البرمجية وحلول إدارة الأعمال بقيادة المهندس أحمد فتحي. بنساعد الشركات والمعارض والمتاجر على أتمتة حساباتهم ومبيعاتهم.";
+                } else if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس") || text.includes("كام")) {
+                    reply = "أسعار الأنظمة عندنا مش ثابتة لأن كل بيزنس ليه احتياجاته الخاصة؛ إحنا بنصمم النظام على مقاس نشاطك تماماً عشان تدفع في اللي يفيدك بجد وبأعلى قيمة مقابل سعر.";
+                } else if (text.includes("فرق") || text.includes("ليه انت") || text.includes("مميزاتها") || text.includes("ليه اختارك"))  {
+                    reply = "الفرق بينا وبين غيرنا إننا مش بنبيع برامج جاهزة معقدة أو شغلة ورقية تقليدية؛ إحنا بنبني لك نظام ويب خاص بنشاطك (سريع، أمان عالي، بدون أخطاء بشرية، وبيوفر مئات ساعات العمل).";
+                } else if (text.includes("ازاى") || text.includes("كيف") || text.includes("طريقة الشغل") || text.includes("خطوات")) {
+                    reply = "الموضوع أبسط ما يمكن: بتكلمنا نتناقش في تفاصيل نشاطك وطبيعة شغلك، وبنصمم لك النظام ونوريه لك كديمو حي، وبعدها بينطلق معاك ليدير أرباحك أوتوماتيك.";
+                } else if (text.includes("فوائد") || text.includes("تاثير") || text.includes("ايه المستستفيد") || text.includes("مميزاتي")) {
+                    reply = "النظام بيوفر عليك وقت ضايع في الحسابات اليدوية، بيقضي تماماً على النسيان والأخطاء البشرية، وبيطلع لك تقارير ومبيعات دقيقة بنقرة زر واحدة عشان تاخد قرارات صحيحة تضاعف أرباحك.";
+                } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("ملابس") || text.includes("بيزنس")) {
+                    reply = "ممتاز جداً! نشاطك محتاج نظام إدارة مخازن ومعارض دقيق وسهل. تحب نحدد مكالمة سريعة أو نتواصل واتساب مع المهندس أحمد عشان نأكد لك التفاصيل والميزانية المناسبة؟";
                 } else {
-                    // الرد الاحتياطي (لو عطل خالص أو سؤال معقد) بيحوله فورا للمهندس أحمد
-                    reply = "سؤال مهم جداً! وعشان نجاوبك عليه بدقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي.";
+                    reply = "سؤال ممتاز ومهم لبيزنس ناجح! وعشان نديك الإجابة الدقيقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي لنرتب لك النظام المناسب.";
                 }
 
                 chatMsgs.innerHTML += `
