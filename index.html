@@ -341,6 +341,38 @@
         </div>
     </section>
 
+    <!-- أداة المساعد الذكي الحقيقي (AI Chat Widget) -->
+    <div id="aiChatWidget" class="fixed bottom-5 right-5 z-50">
+        <!-- زر فتح الشات -->
+        <button onclick="toggleAiChat()" id="aiChatBtn" class="w-14 h-14 bg-primaryBlue text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all border border-blue-400/30">
+            <i class="fa-solid fa-robot"></i>
+        </button>
+
+        <!-- صندوق المحادثة الذكي -->
+        <div id="aiChatBox" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-80 bg-cardBg border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+            <div class="bg-primaryBlue p-4 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i>
+                    <span class="font-bold text-sm">مستشارك الذكي (Ahmed Fathy AI)</span>
+                </div>
+                <button onclick="toggleAiChat()" class="text-white hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <div id="aiChatMessages" class="p-3 h-64 overflow-y-auto space-y-3 text-xs sm:text-sm text-slate-200 bg-slate-950/60">
+                <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]">
+                    أهلاً بك! أنا مساعد أحمد فتحي الذكي. اكتب سؤالك هنا (مثل: "عايز نظام لمحل ملابس"، "بكام السعر؟"، أو "إيه الأفضل لنشاطي؟") وهرد عليك فوراً!
+                </div>
+            </div>
+
+            <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
+                <input type="text5" id="aiUserInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
+                <button onclick="sendAiMessage()" class="bg-primaryBlue text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 5. قسم التواصل -->
     <section id="contact" class="py-12 sm:py-20 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/25">
         <div class="w-full max-w-4xl mx-auto bg-cardBg border border-whatsappGreen/40 p-6 sm:p-10 lg:p-14 rounded-3xl shadow-2xl text-center space-y-6 relative hover-lift">
@@ -530,6 +562,51 @@
             const totalHours = Math.round((clients * avgMinutes) / 60);
             const unitText = currentLang === 'ar' ? ' ساعة' : ' Hours';
             document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
+        }
+
+        // تشغيل الشات بوت الذكي التفاعلي
+        function toggleAiChat() {
+            const box = document.getElementById('aiChatBox');
+            box.classList.toggle('hidden');
+        }
+
+        function handleAiKey(e) {
+            if (e.key === 'Enter') {
+                sendAiMessage();
+            }
+        }
+
+        function sendAiMessage() {
+            const input = document.getElementById('aiUserInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const chatMsgs = document.getElementById('aiChatMessages');
+            
+            // رسالة المستخدم
+            chatMsgs.innerHTML += `<div class="bg-primaryBlue text-white p-2.5 rounded-xl max-w-[85%] mr-auto text-right">${msg}</div>`;
+            input.value = '';
+            chatMsgs.scrollTop = chatMsgs.scrollHeight;
+
+            // ذكاء اصطناعي تفاعلي للرد المباشر أو التحويل لواتساب
+            setTimeout(() => {
+                let reply = "أهلاً بك! بناءً على سؤالك، أفضل طريقة لمناقشة تفاصيل نظامك وميزانيته هي التواصل مباشرة مع المهندس أحمد فتحي.";
+                if (msg.includes("سعر") || msg.includes("تكلفة") || msg.includes("بكام")) {
+                    reply = "أسعار الأنظمة مخصصة حسب متطلبات شركتك لضمان أفضل قيمة مقابل سعر. تواصل معنا عبر واتساب لنحدد العرض المناسب لك فوراً!";
+                } else if (msg.includes("متجر") || msg.includes("معرض") || msg.includes("موتوسيكلات") || msg.includes("ساعات")) {
+                    reply = "لدينا أنظمة مخصصة لإدارة المتاجر والمعارض والمخازن بكفاءة عالية. هل تحب أن نرسل لك ديمو تجريبي؟";
+                }
+
+                chatMsgs.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%] space-y-2">
+                        <p>${reply}</p>
+                        <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="inline-block bg-whatsappGreen text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
+                            <i class="fa-brands fa-whatsapp ml-1"></i> تواصل فوري واتساب
+                        </a>
+                    </div>
+                `;
+                chatMsgs.scrollTop = chatMsgs.scrollHeight;
+            }, 600);
         }
 
         calculateROI();
