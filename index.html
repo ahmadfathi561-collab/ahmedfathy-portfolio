@@ -341,7 +341,7 @@
         </div>
     </section>
 
-    <!-- أداة المساعد الذكي الحقيقي (AI Chat Widget) -->
+    <!-- أداة المساعد الذكي المتجاوب والفاهم -->
     <div id="aiChatWidget" class="fixed bottom-5 right-5 z-50">
         <!-- زر فتح الشات -->
         <button onclick="toggleAiChat()" id="aiChatBtn" class="w-14 h-14 bg-primaryBlue text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all border border-blue-400/30">
@@ -360,12 +360,12 @@
             
             <div id="aiChatMessages" class="p-3 h-64 overflow-y-auto space-y-3 text-xs sm:text-sm text-slate-200 bg-slate-950/60">
                 <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]">
-                    أهلاً بك! أنا مساعد أحمد فتحي الذكي. اكتب سؤالك هنا (مثل: "عايز نظام لمحل ملابس"، "بكام السعر؟"، أو "إيه الأفضل لنشاطي؟") وهرد عليك فوراً!
+                    أهلاً بك! أنا مستشارك التقني الذكي. اسألني عن أي نظام برمجي، الأسعار، أو الأنسب لشركتك وهرد عليك فوراً!
                 </div>
             </div>
 
             <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-                <input type="text5" id="aiUserInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
+                <input type="text" id="aiUserInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
                 <button onclick="sendAiMessage()" class="bg-primaryBlue text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
@@ -534,10 +534,22 @@
             }
         };
 
-        let currentLang = 'ar';
+        // 1. قراءة اللغة المحفوظة من الـ LocalStorage (ثابتة ومش بتتغير لوحدها أبداً)
+        let currentLang = localStorage.getItem('site_lang') || 'ar';
+
+        // تطبيق اللغة فور فتح الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('site_lang', currentLang); // حفظ دائم لاختيار العميل
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
             document.documentElement.setAttribute('lang', currentLang);
             document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             document.getElementById('langBtnText').innerText = currentLang === 'ar' ? 'EN' : 'AR';
@@ -564,7 +576,7 @@
             document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
         }
 
-        // تشغيل الشات بوت الذكي التفاعلي
+        // 2. مستشار ذكي متجاوب وفعال يفهم العميل ويرد صح، ولو عطل يحوله للمهندس أحمد
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             box.classList.toggle('hidden');
@@ -583,25 +595,32 @@
 
             const chatMsgs = document.getElementById('aiChatMessages');
             
-            // رسالة المستخدم
             chatMsgs.innerHTML += `<div class="bg-primaryBlue text-white p-2.5 rounded-xl max-w-[85%] mr-auto text-right">${msg}</div>`;
             input.value = '';
             chatMsgs.scrollTop = chatMsgs.scrollHeight;
 
-            // ذكاء اصطناعي تفاعلي للرد المباشر أو التحويل لواتساب
             setTimeout(() => {
-                let reply = "أهلاً بك! بناءً على سؤالك، أفضل طريقة لمناقشة تفاصيل نظامك وميزانيته هي التواصل مباشرة مع المهندس أحمد فتحي.";
-                if (msg.includes("سعر") || msg.includes("تكلفة") || msg.includes("بكام")) {
-                    reply = "أسعار الأنظمة مخصصة حسب متطلبات شركتك لضمان أفضل قيمة مقابل سعر. تواصل معنا عبر واتساب لنحدد العرض المناسب لك فوراً!";
-                } else if (msg.includes("متجر") || msg.includes("معرض") || msg.includes("موتوسيكلات") || msg.includes("ساعات")) {
-                    reply = "لدينا أنظمة مخصصة لإدارة المتاجر والمعارض والمخازن بكفاءة عالية. هل تحب أن نرسل لك ديمو تجريبي؟";
+                let reply = "";
+                const text = msg.toLowerCase();
+
+                if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس")) {
+                    reply = "أسعار الأنظمة عندنا مخصصة ومصممة حسب حجم نشاطك ومتطلباتك عشان تدفع في اللي يفيدك بجد. عشان نديك سعر دقيق ومناسب، تواصل معنا مباشرة مع المهندس أحمد فتحي.";
+                } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("بيع")) {
+                    reply = "ممتاز! عندنا أنظمة ويب متكاملة لإدارة المعارض والمتاجر، بتدير المخازن، الأقساط، الكاش، وحركة الأرباح بدقة. تحب نبعتلك تفاصيل أكتر؟";
+                } else if (text.includes("حجز") || text.includes("مواعيد") || text.includes("عيادة") || text.includes("مركز")) {
+                    reply = "بنصمم أنظمة حجوزات ومواعيد ذكية جداً بتنظم جدول العملاء وتأكد المواعيد تلقائياً بدون أي تداخل أو نسيان.";
+                } else if (text.includes("لوحة") || text.includes("تحكم") || text.includes("إدارة موظفين")) {
+                    reply = "لوحات التحكم (Dashboards) اللي بنطورها بتتيح لك متابعة سير العمل وتقارير الأرباح لحظة بلحظة وبكل سهولة.";
+                } else {
+                    // الرد الاحتياطي (لو عطل خالص أو سؤال معقد) بيحوله فورا للمهندس أحمد
+                    reply = "سؤال مهم جداً! وعشان نجاوبك عليه بدقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي.";
                 }
 
                 chatMsgs.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%] space-y-2">
                         <p>${reply}</p>
-                        <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="inline-block bg-whatsappGreen text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
-                            <i class="fa-brands fa-whatsapp ml-1"></i> تواصل فوري واتساب
+                        <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="inline-block bg-whatsappGreen text-white px-3.5 py-2 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
+                            <i class="fa-brands fa-whatsapp ml-1"></i> تواصل مع أحمد فتحي مباشرة
                         </a>
                     </div>
                 `;
