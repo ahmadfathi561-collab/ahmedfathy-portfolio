@@ -33,6 +33,7 @@
             color: #ffffff;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            width: 100%;
         }
         
         [dir="ltr"] {
@@ -83,30 +84,30 @@
         }
     </style>
 </head>
-<body class="bg-darkBg text-white relative selection:bg-primaryBlue selection:text-white">
+<body class="bg-darkBg text-white relative selection:bg-primaryBlue selection:text-white w-full">
 
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1600px] h-[1600px] animated-bg pointer-events-none -z-10 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1600px] animated-bg pointer-events-none -z-10 blur-3xl"></div>
 
-    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-darkBg/85 border-b border-slate-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-            <div class="text-base sm:text-xl lg:text-2xl font-black tracking-widest text-primaryBlue flex items-center gap-2">
-                <i class="fa-solid fa-code text-lg sm:text-xl animate-spin" style="animation-duration: 10s;"></i> 
+    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-darkBg/90 border-b border-slate-800 transition-all">
+        <div class="w-full px-3 sm:px-6 h-20 flex items-center justify-between">
+            <div class="text-sm sm:text-xl lg:text-2xl font-black tracking-widest text-primaryBlue flex items-center gap-1.5 sm:gap-2">
+                <i class="fa-solid fa-code text-base sm:text-xl animate-spin" style="animation-duration: 10s;"></i> 
                 <span data-i18n="brand_name">Ahmed Fathy</span> 
                 <span class="text-xs text-emerald-400 font-normal hidden md:inline" data-i18n="brand_sub">| مطور ومستشار تقني</span>
             </div>
             
-            <div class="flex items-center gap-2 sm:gap-3">
-                <button onclick="toggleLanguage()" class="bg-slate-900 border border-slate-700 px-3 py-2 sm:px-3.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold hover:border-primaryBlue transition-all flex items-center gap-1.5 shadow-md">
+            <div class="flex items-center gap-1.5 sm:gap-3">
+                <button onclick="toggleLanguage()" class="bg-slate-900 border border-slate-700 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-bold hover:border-primaryBlue transition-all flex items-center gap-1 shadow-md">
                     <i class="fa-solid fa-globe text-primaryBlue"></i>
                     <span id="langBtnText">EN</span>
                 </button>
 
-                <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-facebookBlue hover:bg-facebookBlue hover:text-white transition-all shadow-lg" title="صفحتي على الفيسبوك">
-                    <i class="fa-brands fa-facebook-f text-sm sm:text-base"></i>
+                <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-facebookBlue hover:bg-facebookBlue hover:text-white transition-all shadow-lg" title="صفحتي على الفيسبوك">
+                    <i class="fa-brands fa-facebook-f text-xs sm:text-base"></i>
                 </a>
                 
-                <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20شاهدت%20الديمو%20الخاص%20بك%20وأريد%20الاستفسار%20عن%20تنفيذ%20نظام%20لشركتي" target="_blank" class="bg-whatsappGreen text-white px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs sm:text-sm shadow-lg shadow-whatsappGreen/30 flex items-center gap-1.5">
-                    <i class="fa-brands fa-whatsapp text-sm sm:text-base"></i> <span data-i18n="whatsapp_btn">واتساب</span>
+                <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20شاهدت%20الديمو%20الخاص%20بك%20وأريد%20الاستفسار%20عن%20تنفيذ%20نظام%20لشركتي" target="_blank" class="bg-whatsappGreen text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs shadow-lg shadow-whatsappGreen/30 flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp text-xs sm:text-base"></i> <span data-i18n="whatsapp_btn">واتساب</span>
                 </a>
             </div>
         </div>
@@ -135,10 +136,10 @@
         </a>
     </div>
 
-    <section id="hero" class="min-h-screen pt-28 sm:pt-32 pb-16 flex items-center justify-center relative px-4 sm:px-6">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <section id="hero" class="min-h-screen pt-28 sm:pt-32 pb-16 flex items-center justify-center relative w-full px-4 sm:px-6">
+        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
-            <div class="space-y-5 text-center lg:text-right">
+            <div class="space-y-5 text-center lg:text-right w-full">
                 <span class="inline-block px-4 py-2 mb-1 rounded-full bg-primaryBlue/10 border border-primaryBlue/30 text-primaryBlue text-xs sm:text-sm font-bold tracking-widest uppercase shadow-md">
                     <span data-i18n="hero_badge">أنت تقرأ نموذجاً حياً لأعلى معايير البرمجة وإدارة الأعمال</span>
                 </span>
@@ -146,11 +147,11 @@
                     <span class="block" data-i18n="hero_title_1">حوّل فوضى الأوراق والبيانات إلى</span>
                     <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primaryBlue via-indigo-400 to-emerald-400 pt-1" data-i18n="hero_title_2">نظام رقمي يدير أرباحك تلقائياً</span>
                 </h1>
-                <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-light leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2 px-2 sm:px-0">
+                <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-light leading-relaxed w-full mx-auto lg:mx-0 pt-2 px-1 sm:px-0">
                     <span data-i18n="hero_desc_1">أنا</span> <span class="text-white font-bold">أحمد فتحي</span>. <span data-i18n="hero_desc_2">أساعد أصحاب الشركات والمعارض والمتاجر على بناء منصات وأنظمة ويب خاصة بهم لتوفير الوقت، منع الأخطاء، ومضاعفة المبيعات بأعلى جودة واحترافية.</span>
                 </p>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-4">
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-4 w-full">
                     <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20مناقشة%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
                         <i class="fa-brands fa-whatsapp text-xl animate-bounce"></i> <span data-i18n="hero_wa_btn">ابدأ محادثة واتساب الآن</span>
                     </a>
@@ -161,8 +162,8 @@
             </div>
 
             <div class="relative flex justify-center items-center w-full mt-6 lg:mt-0">
-                <div class="absolute w-64 h-64 sm:w-80 sm:h-80 bg-primaryBlue/25 rounded-full blur-3xl"></div>
-                <div class="relative z-10 w-full max-w-md rounded-2xl bg-cardBg border border-slate-800 p-5 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 hover-lift">
+                <div class="absolute w-full max-w-xs h-64 sm:h-80 bg-primaryBlue/25 rounded-full blur-3xl"></div>
+                <div class="relative z-10 w-full rounded-2xl bg-cardBg border border-slate-800 p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 hover-lift">
                     <div class="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primaryBlue/20 text-primaryBlue flex items-center justify-center font-bold">
@@ -197,8 +198,8 @@
         </div>
     </section>
 
-    <section id="why-me" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative px-4 sm:px-6 border-t border-slate-800 bg-cardBg/20">
-        <div class="max-w-7xl mx-auto w-full">
+    <section id="why-me" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/20">
+        <div class="w-full max-w-7xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="why_badge">إجابات واضحة لكل صاحب شركة</span>
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="why_title">ليه برامج الإدارة الجاهزة أو الشغل اليدوي بيكبدك خسائر؟</h2>
@@ -207,8 +208,8 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-right">
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-right w-full">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl shadow-md">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </div>
@@ -218,7 +219,7 @@
                     </p>
                 </div>
 
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl shadow-md">
                         <i class="fa-solid fa-clock-rotate-left"></i>
                     </div>
@@ -228,7 +229,7 @@
                     </p>
                 </div>
 
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shadow-md">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
@@ -241,16 +242,16 @@
         </div>
     </section>
 
-    <section id="calculator" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative px-4 sm:px-6 border-t border-slate-800 bg-cardBg/40">
-        <div class="max-w-5xl mx-auto w-full">
+    <section id="calculator" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/40">
+        <div class="w-full max-w-5xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="calc_badge">تجربة عملية تفاعلية</span>
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="calc_title">حاسبة الوقت الموفر بناءً على طبيعة عملك</h2>
                 <p class="text-slate-300 text-sm sm:text-base mt-2 px-2" data-i18n="calc_desc">حدد عدد عملائك واختر طبيعة وسرعة تسجيل البيانات لديهم.</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center bg-cardBg border border-slate-800 p-6 sm:p-8 lg:p-12 rounded-3xl shadow-2xl hover-lift">
-                <div class="space-y-6 text-right">
+            <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center bg-cardBg border border-slate-800 p-6 sm:p-8 lg:p-12 rounded-3xl shadow-2xl hover-lift">
+                <div class="space-y-6 text-right w-full">
                     <div>
                         <label class="block text-sm sm:text-base font-semibold text-slate-200 mb-2" data-i18n="calc_label_clients">عدد العملاء أو المعاملات شهرياً:</label>
                         <input type="range" id="clientsRange" min="100" max="5000" step="100" value="1000" oninput="calculateROI()" class="w-full accent-primaryBlue cursor-pointer h-2 bg-slate-800 rounded-lg">
@@ -275,7 +276,7 @@
                     </div>
                 </div>
 
-                <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-whatsappGreen/30 text-center space-y-6 shadow-xl flex flex-col justify-center">
+                <div class="w-full p-6 sm:p-8 rounded-2xl bg-slate-900 border border-whatsappGreen/30 text-center space-y-6 shadow-xl flex flex-col justify-center">
                     <span class="text-xs sm:text-sm text-slate-300 uppercase tracking-widest" data-i18n="calc_res_title">إجمالي الساعات المهدرة يدوياً شهرياً</span>
                     <div class="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-whatsappGreen my-2" id="savedHours">
                         117 ساعة
@@ -290,16 +291,16 @@
         </div>
     </section>
 
-    <section id="services" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative px-4 sm:px-6 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto w-full">
+    <section id="services" class="min-h-screen py-20 sm:py-24 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800">
+        <div class="w-full max-w-7xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16 space-y-4">
                 <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="serv_badge">حلول برمجية مخصصة</span>
                 <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="serv_title">ما هو النظام الذي تحتاجه في نشاطك؟</h2>
                 <p class="text-slate-300 text-sm sm:text-base mt-2 px-2" data-i18n="serv_desc">اختر النظام الأقرب لطبيعة عملك، وتواصل معي مباشرة لنناقش تفاصيله وميزانيته.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
                         <i class="fa-solid fa-shop"></i>
                     </div>
@@ -310,7 +311,7 @@
                     </a>
                 </div>
 
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
                         <i class="fa-solid fa-calendar-check"></i>
                     </div>
@@ -321,7 +322,7 @@
                     </a>
                 </div>
 
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4">
+                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
                         <i class="fa-solid fa-laptop-code"></i>
                     </div>
@@ -335,8 +336,8 @@
         </div>
     </section>
 
-    <section id="contact" class="min-h-[70vh] sm:min-h-[80vh] py-20 sm:py-24 flex items-center justify-center relative px-4 sm:px-6 border-t border-slate-800 bg-cardBg/20">
-        <div class="max-w-4xl mx-auto w-full bg-cardBg border border-whatsappGreen/40 p-6 sm:p-10 lg:p-14 rounded-3xl shadow-2xl text-center space-y-6 relative hover-lift">
+    <section id="contact" class="min-h-[70vh] sm:min-h-[80vh] py-20 sm:py-24 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/20">
+        <div class="w-full max-w-4xl mx-auto bg-cardBg border border-whatsappGreen/40 p-6 sm:p-10 lg:p-14 rounded-3xl shadow-2xl text-center space-y-6 relative hover-lift">
             <div class="w-18 h-18 sm:w-20 sm:h-20 bg-whatsappGreen/20 text-whatsappGreen rounded-full flex items-center justify-center mx-auto text-3xl sm:text-4xl animate-bounce shadow-lg">
                 <i class="fa-brands fa-whatsapp"></i>
             </div>
@@ -348,7 +349,7 @@
                 </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-4">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-4 w-full">
                 <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20البدء%20في%20تنفيذ%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
                     <i class="fa-brands fa-whatsapp text-xl"></i> <span data-i18n="contact_wa_btn">افتح محادثة واتساب الآن</span>
                 </a>
@@ -359,7 +360,7 @@
         </div>
     </section>
 
-    <footer class="py-6 sm:py-8 border-t border-slate-800 text-center text-xs sm:text-sm text-slate-400 bg-slate-950 space-y-2 px-4">
+    <footer class="w-full py-6 sm:py-8 border-t border-slate-800 text-center text-xs sm:text-sm text-slate-400 bg-slate-950 space-y-2 px-4">
         <p data-i18n="footer_rights">© 2026 Ahmed Fathy (أحمد فتحي). جميع الحقوق محفوظة لتقديم الحلول البرمجية وتطوير الأنظمة الذكية.</p>
         <p class="text-slate-300">للتواصل المباشر: 01035153618</p>
     </footer>
@@ -524,7 +525,7 @@
             document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
         }
 
-2. calculateROI();
+        calculateROI();
 
         const sections = document.querySelectorAll('section');
         const navDots = document.querySelectorAll('.nav-dot');
