@@ -16,6 +16,7 @@
                         primaryBlue: '#2563EB',
                         whatsappGreen: '#25D366',
                         facebookBlue: '#1877F2',
+                        gmailRed: '#EA4335',
                         cardBg: '#0F172A'
                     }
                 }
@@ -102,6 +103,10 @@
                     <span id="langBtnText">EN</span>
                 </button>
 
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadfathi561@gmail.com&su=استفسار بخصوص نظام برمجي&body=مرحباً أحمد، أريد الاستفسار عن..." target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-gmailRed hover:bg-gmailRed hover:text-white transition-all shadow-lg" title="راسلني عبر البريد الإلكتروني">
+                    <i class="fa-solid fa-envelope text-xs sm:text-base"></i>
+                </a>
+
                 <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-facebookBlue hover:bg-facebookBlue hover:text-white transition-all shadow-lg" title="صفحتي على الفيسبوك">
                     <i class="fa-brands fa-facebook-f text-xs sm:text-base"></i>
                 </a>
@@ -157,8 +162,8 @@
                     <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20مناقشة%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
                         <i class="fa-brands fa-whatsapp text-xl animate-bounce"></i> <span data-i18n="hero_wa_btn">ابدأ محادثة واتساب الآن</span>
                     </a>
-                    <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-full sm:w-auto border border-slate-700 bg-slate-900/60 px-5 sm:px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base hover:bg-facebookBlue hover:border-facebookBlue transition-all flex items-center justify-center gap-2 shadow-md">
-                        <i class="fa-brands fa-facebook-f text-facebookBlue"></i> <span data-i18n="hero_fb_btn">تابع صفحتي الشخصية</span>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadfathi561@gmail.com&su=استفسار%20بخصوص%20نظام%20برمجي&body=مرحباً%20أحمد،%20أريد%20الاستفسار%20عن..." target="_blank" class="w-full sm:w-auto border border-slate-700 bg-slate-900/60 px-5 sm:px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base hover:bg-gmailRed hover:border-gmailRed transition-all flex items-center justify-center gap-2 shadow-md">
+                        <i class="fa-solid fa-envelope text-gmailRed"></i> <span data-i18n="hero_email_btn">راسلني عبر الجيميل</span>
                     </a>
                 </div>
             </div>
@@ -341,7 +346,7 @@
         </div>
     </section>
 
-    <!-- أداة المساعد الذكي الخارق (مع ربط تخزين الأسئلة أوتوماتيك بـ Google Sheets) -->
+    <!-- أداة المساعد الذكي ثنائي اللغة وتخزين الأسئلة أوتوماتيكياً -->
     <div id="aiChatWidget" class="fixed bottom-5 right-5 z-50">
         <!-- زر فتح الشات -->
         <button onclick="toggleAiChat()" id="aiChatBtn" class="w-14 h-14 bg-primaryBlue text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all border border-blue-400/30">
@@ -353,19 +358,19 @@
             <div class="bg-primaryBlue p-4 text-white flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-robot"></i>
-                    <span class="font-bold text-sm">مستشارك الذكي (Ahmed Fathy AI)</span>
+                    <span class="font-bold text-sm" data-i18n="chat_header">مستشارك الذكي (Ahmed Fathy AI)</span>
                 </div>
                 <button onclick="toggleAiChat()" class="text-white hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             
             <div id="aiChatMessages" class="p-3 h-64 overflow-y-auto space-y-3 text-xs sm:text-sm text-slate-200 bg-slate-950/60">
-                <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]">
+                <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]" data-i18n="chat_welcome">
                     أهلاً بك! أنا مساعد المهندس أحمد فتحي الذكي. اسألني عن أي تفاصيل، فوائد، أسعار، أو مميزات أنظمتنا وهرد عليك فوراً!
                 </div>
             </div>
 
             <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-                <input type="text" id="aiUserInput" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
+                <input type="text" id="aiUserInput" data-i18n-placeholder="chat_placeholder" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
                 <button onclick="sendAiMessage()" class="bg-primaryBlue text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
@@ -383,13 +388,16 @@
                 <span class="text-whatsappGreen text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="contact_badge">تواصل مباشر وسريع مع أحمد فتحي</span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-snug px-2" data-i18n="contact_title">جاهز لنقل عملك إلى المستوى التقني التالي؟</h2>
                 <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mt-2 px-2" data-i18n="contact_desc">
-                    تواصل معي مباشرة عبر واتساب على الرقم <span class="text-white font-bold" dir="ltr">01035153618</span> أو تابع أعمالي ونشاطي عبر صفحتي الشخصية على الفيسبوك لنبدأ فوراً.
+                    تواصل معي مباشرة عبر واتساب على الرقم <span class="text-white font-bold" dir="ltr">01035153618</span> أو راسلني عبر الجيميل <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadfathi561@gmail.com&su=استفسار%20بخصوص%20نظام%20برمجي" target="_blank" class="text-primaryBlue underline">ahmadfathi561@gmail.com</a> لنبدأ فوراً.
                 </p>
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-4 w-full">
                 <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20البدء%20في%20تنفيذ%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
                     <i class="fa-brands fa-whatsapp text-xl"></i> <span data-i18n="contact_wa_btn">افتح محادثة واتساب الآن</span>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadfathi561@gmail.com&su=استفسار%20بخصوص%20نظام%20برمجي&body=مرحباً%20أحمد،%20أريد%20الاستفسار%20عن..." target="_blank" class="w-full sm:w-auto bg-slate-900 border border-slate-700 text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-gmailRed hover:border-gmailRed transition-all flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-envelope text-gmailRed hover:text-white"></i> <span data-i18n="contact_email_btn">راسلني عبر الجيميل</span>
                 </a>
                 <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-full sm:w-auto bg-slate-900 border border-slate-700 text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-facebookBlue hover:border-facebookBlue transition-all flex items-center justify-center gap-2 shadow-md">
                     <i class="fa-brands fa-facebook-f text-facebookBlue"></i> <span data-i18n="contact_fb_btn">زور صفحتي على فيسبوك</span>
@@ -401,7 +409,7 @@
     <!-- التذييل -->
     <footer class="w-full py-6 sm:py-8 border-t border-slate-800 text-center text-xs sm:text-sm text-slate-400 bg-slate-950 space-y-2 px-4">
         <p data-i18n="footer_rights">© 2026 Ahmed Fathy (أحمد فتحي). جميع الحقوق محفوظة لتقديم الحلول البرمجية وتطوير الأنظمة الذكية.</p>
-        <p class="text-slate-300">للتواصل المباشر: 01035153618</p>
+        <p class="text-slate-300">للتواصل المباشر: 01035153618 | البريد الإلكتروني: ahmadfathi561@gmail.com</p>
     </footer>
 
     <script>
@@ -410,6 +418,11 @@
                 brand_name: "Ahmed Fathy",
                 brand_sub: "| مطور ومستشار تقني",
                 whatsapp_btn: "تواصل واتساب",
+                hero_email_btn: "راسلني عبر الجيميل",
+                contact_email_btn: "راسلني عبر الجيميل",
+                chat_header: "مستشارك الذكي (Ahmed Fathy AI)",
+                chat_welcome: "أهلاً بك! أنا مساعد المهندس أحمد فتحي الذكي. اسألني عن أي تفاصيل، فوائد، أسعار، أو مميزات أنظمتنا وهرد عليك فوراً!",
+                chat_placeholder: "اكتب استفسارك هنا...",
                 nav_home: "الرئيسية",
                 nav_why: "لماذا تحتاج النظام؟",
                 nav_calc: "حاسبة الوقت",
@@ -464,7 +477,7 @@
                 order_wa: "اطلب هذا النظام عبر واتساب",
                 contact_badge: "تواصل مباشر وسريع مع أحمد فتحي",
                 contact_title: "جاهز لنقل عملك إلى المستوى التقني التالي؟",
-                contact_desc: "تواصل معي مباشرة عبر واتساب على الرقم 01035153618 أو تابع أعمالي ونشاطي عبر صفحتي الشخصية على الفيسبوك لنبدأ فوراً.",
+                contact_desc: "تواصل معي مباشرة عبر واتساب على الرقم 01035153618 أو راسلني عبر الجيميل ahmadfathi561@gmail.com لنبدأ فوراً.",
                 contact_wa_btn: "افتح محادثة واتساب الآن",
                 contact_fb_btn: "زور صفحتي على فيسبوك",
                 footer_rights: "© 2026 Ahmed Fathy (أحمد فتحي). جميع الحقوق محفوظة لتقديم الحلول البرمجية وتطوير الأنظمة الذكية."
@@ -473,6 +486,11 @@
                 brand_name: "Ahmed Fathy",
                 brand_sub: "| Software Developer & Consultant",
                 whatsapp_btn: "WhatsApp",
+                hero_email_btn: "Email Me",
+                contact_email_btn: "Email Me",
+                chat_header: "Smart Advisor (Ahmed Fathy AI)",
+                chat_welcome: "Welcome! I'm Ahmed Fathy's smart assistant. Ask me about details, benefits, pricing, or system features and I'll reply instantly!",
+                chat_placeholder: "Type your inquiry here...",
                 nav_home: "Home",
                 nav_why: "Why Need a System?",
                 nav_calc: "Time Calculator",
@@ -527,7 +545,7 @@
                 order_wa: "Request This System via WhatsApp",
                 contact_badge: "Direct & Fast Contact with Ahmed Fathy",
                 contact_title: "Ready to Take Your Business to the Next Tech Level?",
-                contact_desc: "Contact me directly via WhatsApp at 01035153618 or follow my work on Facebook to get started immediately.",
+                contact_desc: "Contact me directly via WhatsApp at 01035153618 or via Email at ahmadfathi561@gmail.com to get started immediately.",
                 contact_wa_btn: "Open WhatsApp Chat Now",
                 contact_fb_btn: "Visit My Facebook Page",
                 footer_rights: "© 2026 Ahmed Fathy. All rights reserved for software solutions and smart system development."
@@ -561,6 +579,12 @@
                 }
             });
 
+            // تحديث الـ Placeholders
+            const placeholderKey = document.getElementById('aiUserInput').getAttribute('data-i18n-placeholder');
+            if (translations[currentLang][placeholderKey]) {
+                document.getElementById('aiUserInput').placeholder = translations[currentLang][placeholderKey];
+            }
+
             calculateROI();
         }
 
@@ -575,7 +599,7 @@
             document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
         }
 
-        // مستشار ذكي متطور ومتجاوب مع تخزين الأسئلة أوتوماتيكياً في Google Sheets
+        // مستشار ذكي متطور ثنائي اللغة مع تخزين الأسئلة في شيت
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             box.classList.toggle('hidden');
@@ -611,28 +635,50 @@
                 let reply = "";
                 const text = msg.toLowerCase();
 
-                if (text.includes("مين") || text.includes("من انتم") || text.includes("انت مين") || text.includes("عرفنا")) {
-                    reply = "إحنا منصة متخصصة في هندسة الويب وتطوير الأنظمة البرمجية وحلول إدارة الأعمال بقيادة المهندس أحمد فتحي. بنساعد الشركات والمعارض والمتاجر على أتمتة حساباتهم ومبيعاتهم.";
-                } else if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس") || text.includes("كام")) {
-                    reply = "أسعار الأنظمة عندنا مش ثابتة لأن كل بيزنس ليه احتياجاته الخاصة؛ إحنا بنصمم النظام على مقاس نشاطك تماماً عشان تدفع في اللي يفيدك بجد وبأعلى قيمة مقابل سعر.";
-                } else if (text.includes("فرق") || text.includes("ليه انت") || text.includes("مميزاتها") || text.includes("ليه اختارك"))  {
-                    reply = "الفرق بينا وبين غيرنا إننا مش بنبيع برامج جاهزة معقدة أو شغلة ورقية تقليدية؛ إحنا بنبني لك نظام ويب خاص بنشاطك (سريع، أمان عالي، بدون أخطاء بشرية، وبيوفر مئات ساعات العمل).";
-                } else if (text.includes("ازاى") || text.includes("كيف") || text.includes("طريقة الشغل") || text.includes("خطوات")) {
-                    reply = "الموضوع أبسط ما يمكن: بتكلمنا نتناقش في تفاصيل نشاطك وطبيعة شغلك، وبنصمم لك النظام ونوريه لك كديمو حي، وبعدها بينطلق معاك ليدير أرباحك أوتوماتيك.";
-                } else if (text.includes("فوائد") || text.includes("تاثير") || text.includes("ايه المستستفيد") || text.includes("مميزاتي")) {
-                    reply = "النظام بيوفر عليك وقت ضايع في الحسابات اليدوية، بيقضي تماماً على النسيان والأخطاء البشرية، وبيطلع لك تقارير ومبيعات دقيقة بنقرة زر واحدة عشان تاخد قرارات صحيحة تضاعف أرباحك.";
-                } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("ملابس") || text.includes("بيزنس")) {
-                    reply = "ممتاز جداً! نشاطك محتاج نظام إدارة مخازن ومعارض دقيق وسهل. تحب نحدد مكالمة سريعة أو نتواصل واتساب مع المهندس أحمد عشان نأكد لك التفاصيل والميزانية المناسبة؟";
+                if (currentLang === 'en') {
+                    // ردود ذكية باللغة الإنجليزية
+                    if (text.includes("who") || text.includes("about") || text.includes("developer")) {
+                        reply = "We are a specialized platform in web engineering and business management systems led by Engineer Ahmed Fathy, helping companies automate their workflow.";
+                    } else if (text.includes("price") || text.includes("cost") || text.includes("how much")) {
+                        reply = "Our pricing is customized based on your business size and exact needs to ensure maximum ROI. Contact us to get an accurate quote.";
+                    } else if (text.includes("store") || text.includes("shop") || text.includes("showroom")) {
+                        reply = "Great! We build integrated showroom and store management systems covering inventory, sales, and profit tracking. Would you like a demo?";
+                    } else {
+                        reply = "That's an important question! To give you the exact details tailored to your business, please contact Engineer Ahmed Fathy directly via WhatsApp or Gmail.";
+                    }
                 } else {
-                    reply = "سؤال ممتاز ومهم لبيزنس ناجح! وعشان نديك الإجابة الدقيقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي لنرتب لك النظام المناسب.";
+                    // ردود ذكية باللغة العربية
+                    if (text.includes("مين") || text.includes("من انتم") || text.includes("انت مين") || text.includes("عرفنا")) {
+                        reply = "إحنا منصة متخصصة في هندسة الويب وتطوير الأنظمة البرمجية وحلول إدارة الأعمال بقيادة المهندس أحمد فتحي. بنساعد الشركات والمعارض والمتاجر على أتمتة حساباتهم ومبيعاتهم.";
+                    } else if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس") || text.includes("كام")) {
+                        reply = "أسعار الأنظمة عندنا مش ثابتة لأن كل بيزنس ليه احتياجاته الخاصة؛ إحنا بنصمم النظام على مقاس نشاطك تماماً عشان تدفع في اللي يفيدك بجد وبأعلى قيمة مقابل سعر.";
+                    } else if (text.includes("فرق") || text.includes("ليه انت") || text.includes("مميزاتها") || text.includes("ليه اختارك"))  {
+                        reply = "الفرق بينا وبين غيرنا إننا مش بنبيع برامج جاهزة معقدة أو شغلة ورقية تقليدية؛ إحنا بنبني لك نظام ويب خاص بنشاطك (سريع، أمان عالي، بدون أخطاء بشرية، وبيوفر مئات ساعات العمل).";
+                    } else if (text.includes("ازاى") || text.includes("كيف") || text.includes("طريقة الشغل") || text.includes("خطوات")) {
+                        reply = "الموضوع أبسط ما يمكن: بتكلمنا نتناقش في تفاصيل نشاطك وطبيعة شغلك، وبنصمم لك النظام ونوريه لك كديمو حي، وبعدها بينطلق معاك ليدير أرباحك أوتوماتيك.";
+                    } else if (text.includes("فوائد") || text.includes("تاثير") || text.includes("ايه المستستفيد") || text.includes("مميزاتي")) {
+                        reply = "النظام بيوفر عليك وقت ضايع في الحسابات اليدوية، بيقضي تماماً على النسيان والأخطاء البشرية، وبيطلع لك تقارير ومبيعات دقيقة بنقرة زر واحدة عشان تاخد قرارات صحيحة تضاعف أرباحك.";
+                    } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("ملابس") || text.includes("بيزنس")) {
+                        reply = "ممتاز جداً! نشاطك محتاج نظام إدارة مخازن ومعارض دقيق وسهل. تحب نحدد مكالمة سريعة أو نتواصل واتساب مع المهندس أحمد عشان نأكد لك التفاصيل والميزانية المناسبة؟";
+                    } else {
+                        reply = "سؤال ممتاز ومهم لبيزنس ناجح! وعشان نديك الإجابة الدقيقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي عبر الواتساب أو الجيميل.";
+                    }
                 }
+
+                const waBtnText = currentLang === 'en' ? 'WhatsApp' : 'واتساب';
+                const emailBtnText = currentLang === 'en' ? 'Gmail' : 'جيميل';
 
                 chatMsgs.innerHTML += `
                     <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%] space-y-2">
                         <p>${reply}</p>
-                        <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="inline-block bg-whatsappGreen text-white px-3.5 py-2 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
-                            <i class="fa-brands fa-whatsapp ml-1"></i> تواصل مع أحمد فتحي مباشرة
-                        </a>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="bg-whatsappGreen text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
+                                <i class="fa-brands fa-whatsapp ml-1"></i> ${waBtnText}
+                            </a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ahmadfathi561@gmail.com&su=استفسار%20بخصوص%20نظام%20برمجي&body=سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="bg-slate-800 text-gmailRed border border-slate-700 px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:bg-gmailRed hover:text-white transition-all">
+                                <i class="fa-solid fa-envelope ml-1"></i> ${emailBtnText}
+                            </a>
+                        </div>
                     </div>
                 `;
                 chatMsgs.scrollTop = chatMsgs.scrollHeight;
