@@ -1,695 +1,327 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Fathy | تطوير الأنظمة البرمجية وحلول إدارة الأعمال</title>
+    <title>Ahmed Fathy | Web Designer & Digital Solutions Developer</title>
+    <meta name="description" content="Discover Ahmed Fathy's portfolio featuring professional business websites, custom management systems, e-commerce experiences, and interactive digital projects.">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#020617',
-                        primaryBlue: '#2563EB',
-                        whatsappGreen: '#25D366',
-                        facebookBlue: '#1877F2',
-                        gmailRed: '#EA4335',
-                        cardBg: '#0F172A'
+                        bgMain: '#090B10',
+                        bgSecondary: '#10141B',
+                        cardBg: '#151B24',
+                        primaryAccent: '#5B8CFF',
+                        secondaryAccent: '#65D5E8',
+                        textPrimary: '#F5F6FA',
+                        textSecondary: '#A0A8B5',
+                        customBorder: '#252C37'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Manrope', 'Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts: Cairo -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #020617 0%, #070b1f 50%, #020617 100%);
-            color: #ffffff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            width: 100%;
-        }
-        
-        [dir="ltr"] {
-            text-align: left;
-            direction: ltr;
-        }
-        [dir="rtl"] {
-            text-align: right;
-            direction: rtl;
-        }
-
-        .animated-bg {
-            background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.22) 0%, rgba(147, 51, 234, 0.12) 35%, rgba(6, 182, 212, 0.08) 60%, rgba(2, 6, 23, 0) 80%);
-        }
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #020617;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1E293B;
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563EB;
-        }
-        .hover-lift {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .hover-lift:hover {
-            transform: translateY(-8px) scale(1.01);
-            box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.35);
-        }
-        .hero-title {
-            line-height: 1.35 !important;
-        }
-        .custom-heading-spacing {
-            line-height: 1.5 !important;
-        }
-
-        .nav-dot span:first-child {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .nav-dot:active span:first-child {
-            transform: scale(0.8);
-        }
+        body { background-color: #090B10; color: #F5F6FA; font-family: 'Inter', sans-serif; }
+        .glass-panel { background: rgba(21, 27, 36, 0.75); backdrop-filter: blur(16px); border: 1px solid #252C37; }
+        .glow-blue { box-shadow: 0 0 50px rgba(91, 140, 255, 0.12); }
+        .glow-cyan { box-shadow: 0 0 50px rgba(101, 213, 232, 0.12); }
     </style>
 </head>
-<body class="bg-darkBg text-white relative selection:bg-primaryBlue selection:text-white w-full">
+<body class="bg-bgMain text-textPrimary antialiased selection:bg-primaryAccent selection:text-white">
 
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1600px] animated-bg pointer-events-none -z-10 blur-3xl"></div>
-
-    <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-darkBg/90 border-b border-slate-800 transition-all">
-        <div class="w-full px-3 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
-            <div class="text-sm sm:text-xl lg:text-2xl font-black tracking-widest text-primaryBlue flex items-center gap-1.5 sm:gap-2">
-                <i class="fa-solid fa-code text-base sm:text-xl animate-spin" style="animation-duration: 10s;"></i> 
-                <span data-i18n="brand_name">Ahmed Fathy</span> 
-                <span class="text-xs text-emerald-400 font-normal hidden md:inline" data-i18n="brand_sub">| مطور ومستشار تقني</span>
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-customBorder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="text-xl font-extrabold tracking-wider text-textPrimary flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-primaryAccent animate-pulse"></span>
+                AHMED FATHY
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-textSecondary">
+                <a href="#home" class="hover:text-primaryAccent transition">Home</a>
+                <a href="#services" class="hover:text-primaryAccent transition">Services</a>
+                <a href="#projects" class="hover:text-primaryAccent transition">Projects</a>
+                <a href="#about" class="hover:text-primaryAccent transition">About</a>
+                <a href="#contact" class="hover:text-primaryAccent transition">Contact</a>
             </div>
-            
-            <div class="flex items-center gap-1.5 sm:gap-3">
-                <button onclick="toggleLanguage()" class="bg-slate-900 border border-slate-700 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-xl text-xs font-bold hover:border-primaryBlue transition-all flex items-center gap-1 shadow-md">
-                    <i class="fa-solid fa-globe text-primaryBlue"></i>
-                    <span id="langBtnText">EN</span>
-                </button>
-
-                <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-facebookBlue hover:bg-facebookBlue hover:text-white transition-all shadow-lg" title="صفحتي على الفيسبوك">
-                    <i class="fa-brands fa-facebook-f text-xs sm:text-base"></i>
-                </a>
-                
-                <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20شاهدت%20الديمو%20الخاص%20بك%20وأريد%20الاستفسار%20عن%20تنفيذ%20نظام%20لشركتي" target="_blank" class="bg-whatsappGreen text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-full font-bold text-xs shadow-lg shadow-whatsappGreen/30 flex items-center gap-1">
-                    <i class="fa-brands fa-whatsapp text-xs sm:text-base"></i> <span data-i18n="whatsapp_btn">واتساب</span>
+            <div>
+                <a href="https://airtable.com/appNPUYOT6lgHF4NH/pagFdwduK8s9TVuHR/form" target="_blank" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-primaryAccent text-white font-semibold text-sm hover:bg-blue-600 transition shadow-lg shadow-blue-500/20">
+                    Let's Work Together
                 </a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- شريط طولي جانبي للتنقل الذكي (للشاشات الكبيرة) -->
-    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-4 bg-cardBg/90 backdrop-blur-2xl border border-slate-800 p-3 rounded-full shadow-2xl">
-        <a href="#hero" class="group relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primaryBlue/25 transition-all nav-dot" data-target="hero" title="الرئيسية">
-            <span class="w-2.5 h-2.5 rounded-full bg-slate-500 group-hover:bg-primaryBlue group-hover:scale-125 transition-all"></span>
-            <span class="absolute left-14 bg-cardBg border border-slate-800 text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap text-primaryBlue font-semibold shadow-lg" data-i18n="nav_home">الرئيسية</span>
-        </a>
-        <a href="#why-me" class="group relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primaryBlue/25 transition-all nav-dot" data-target="why-me" title="لماذا تحتاج نظام؟">
-            <span class="w-2.5 h-2.5 rounded-full bg-slate-500 group-hover:bg-primaryBlue group-hover:scale-125 transition-all"></span>
-            <span class="absolute left-14 bg-cardBg border border-slate-800 text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap text-primaryBlue font-semibold shadow-lg" data-i18n="nav_why">لماذا تحتاج النظام؟</span>
-        </a>
-        <a href="#calculator" class="group relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primaryBlue/25 transition-all nav-dot" data-target="calculator" title="حاسبة الأرباح">
-            <span class="w-2.5 h-2.5 rounded-full bg-slate-500 group-hover:bg-primaryBlue group-hover:scale-125 transition-all"></span>
-            <span class="absolute left-14 bg-cardBg border border-slate-800 text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap text-primaryBlue font-semibold shadow-lg" data-i18n="nav_calc">حاسبة الوقت</span>
-        </a>
-        <a href="#services" class="group relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-primaryBlue/25 transition-all nav-dot" data-target="services" title="الأنظمة المتاحة">
-            <span class="w-2.5 h-2.5 rounded-full bg-slate-500 group-hover:bg-primaryBlue group-hover:scale-125 transition-all"></span>
-            <span class="absolute left-14 bg-cardBg border border-slate-800 text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap text-primaryBlue font-semibold shadow-lg" data-i18n="nav_services">الأنظمة الجاهزة</span>
-        </a>
-        <a href="#contact" class="group relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-whatsappGreen/25 transition-all nav-dot" data-target="contact" title="تواصل مباشر">
-            <span class="w-2.5 h-2.5 rounded-full bg-whatsappGreen group-hover:scale-150 transition-all"></span>
-            <span class="absolute left-14 bg-cardBg border border-slate-800 text-xs px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-all whitespace-nowrap text-whatsappGreen font-semibold shadow-lg" data-i18n="nav_contact">تواصل واتساب</span>
-        </a>
-    </div>
-
-    <!-- القسم الرئيسي (Hero Section) -->
-    <section id="hero" class="pt-28 pb-12 sm:pt-36 sm:pb-20 flex items-center justify-center relative w-full px-4 sm:px-6">
-        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            
-            <div class="space-y-4 text-center lg:text-right w-full">
-                <span class="inline-block px-3.5 py-1.5 mb-1 rounded-full bg-primaryBlue/10 border border-primaryBlue/30 text-primaryBlue text-xs font-bold tracking-widest uppercase shadow-md">
-                    <span data-i18n="hero_badge">أنت تقرأ نموذجاً حياً لأعلى معايير البرمجة وإدارة الأعمال</span>
-                </span>
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black hero-title tracking-wide space-y-2">
-                    <span class="block" data-i18n="hero_title_1">حوّل فوضى الأوراق والبيانات إلى</span>
-                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primaryBlue via-indigo-400 to-emerald-400 pt-1" data-i18n="hero_title_2">نظام رقمي يدير أرباحك تلقائياً</span>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen pt-32 pb-20 flex items-center relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primaryAccent/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-cardBg border border-customBorder text-xs font-semibold text-secondaryAccent tracking-wide">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    INDEPENDENT WEB DESIGNER & DIGITAL SOLUTIONS DEVELOPER
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                    Your Vision.<br>
+                    <span class="text-primaryAccent">My Code.</span><br>
+                    A Better Digital Experience.
                 </h1>
-                <p class="text-slate-300 text-sm sm:text-base lg:text-lg font-light leading-relaxed w-full mx-auto lg:mx-0 pt-2 px-1 sm:px-0">
-                    <span data-i18n="hero_desc_1">أنا</span> <span class="text-white font-bold">أحمد فتحي</span>. <span data-i18n="hero_desc_2">أساعد أصحاب الشركات والمعارض والمتاجر على بناء منصات وأنظمة ويب خاصة بهم لتوفير الوقت، منع الأخطاء، ومضاعفة المبيعات بأعلى جودة واحترافية.</span>
+                <p class="text-lg text-textSecondary max-w-xl leading-relaxed">
+                    I design and develop professional websites and custom digital solutions that help businesses build their online presence and turn ideas into reality.
                 </p>
-
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-3 w-full">
-                    <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20مناقشة%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-3.5 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
-                        <i class="fa-brands fa-whatsapp text-xl animate-bounce"></i> <span data-i18n="hero_wa_btn">ابدأ محادثة واتساب الآن</span>
+                <div class="flex flex-wrap items-center gap-4 pt-2">
+                    <a href="#projects" class="px-8 py-4 rounded-xl bg-primaryAccent text-white font-semibold hover:bg-blue-600 transition shadow-xl shadow-blue-500/25 flex items-center gap-2">
+                        Explore My Work <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://airtable.com/appNPUYOT6lgHF4NH/pagFdwduK8s9TVuHR/form" target="_blank" class="px-8 py-4 rounded-xl bg-cardBg border border-customBorder font-semibold hover:border-primaryAccent transition text-textPrimary inline-flex items-center justify-center">
+                        Start a Project
                     </a>
                 </div>
             </div>
-
-            <div class="relative flex justify-center items-center w-full mt-2 lg:mt-0">
-                <div class="absolute w-full max-w-xs h-60 sm:h-80 bg-primaryBlue/25 rounded-full blur-3xl"></div>
-                <div class="relative z-10 w-full rounded-2xl bg-cardBg border border-slate-800 p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 hover-lift">
-                    <div class="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-primaryBlue/20 text-primaryBlue flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-server text-base sm:text-lg"></i>
-                            </div>
+            <div class="lg:col-span-5">
+                <div class="glass-panel p-6 rounded-3xl glow-blue relative">
+                    <div class="flex items-center justify-between pb-4 border-b border-customBorder mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                        </div>
+                        <span class="text-xs text-textSecondary font-mono">ahmedfathy.dev</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-2xl bg-bgMain border border-customBorder flex items-center justify-between">
                             <div>
-                                <h3 class="text-xs sm:text-sm font-bold" data-i18n="card_status_title">حالة النظام والأنشطة</h3>
-                                <span class="text-[11px] sm:text-xs text-emerald-400"><i class="fa-solid fa-circle text-[8px] ml-1"></i> <span data-i18n="card_status_live">يعمل بكفاءة 100%</span></span>
+                                <p class="text-xs text-textSecondary uppercase font-mono tracking-wider">Featured System</p>
+                                <h4 class="font-bold text-base text-textPrimary">El Tohammy Pro</h4>
                             </div>
+                            <span class="px-3 py-1 rounded-full bg-blue-500/10 text-primaryAccent text-xs font-semibold">Live System</span>
                         </div>
-                        <span class="px-2.5 py-1 rounded-md bg-primaryBlue/10 text-primaryBlue text-xs font-semibold">Ahmed Fathy</span>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-3 sm:gap-4">
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-slate-900 border border-slate-800 shadow-inner">
-                            <span class="text-xs sm:text-sm text-slate-400 block mb-1" data-i18n="card_speed">سرعة الاستجابة</span>
-                            <span class="text-xl sm:text-2xl font-black text-white">0.2s</span>
+                        <div class="p-4 rounded-2xl bg-bgMain border border-customBorder flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-textSecondary uppercase font-mono tracking-wider">E-Commerce Concept</p>
+                                <h4 class="font-bold text-base text-textPrimary">Aurora Store</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-secondaryAccent text-xs font-semibold">Concept</span>
                         </div>
-                        <div class="p-3.5 sm:p-4 rounded-xl bg-slate-900 border border-slate-800 shadow-inner">
-                            <span class="text-xs sm:text-sm text-slate-400 block mb-1" data-i18n="card_security">حماية البيانات</span>
-                            <span class="text-xl sm:text-2xl font-black text-emerald-400" data-i18n="card_encrypted">مشفرة</span>
+                        <div class="p-4 rounded-2xl bg-bgMain border border-customBorder flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-textSecondary uppercase font-mono tracking-wider">Interactive Game</p>
+                                <h4 class="font-bold text-base text-textPrimary">Sunset Escape</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-xs font-semibold">Playable</span>
                         </div>
-                    </div>
-
-                    <div class="p-3.5 sm:p-4 rounded-xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-between shadow-sm">
-                        <span class="text-xs sm:text-sm font-semibold text-slate-200" data-i18n="card_footer_text">تواصل معي مباشرة لتنفيذ نظام خاص بك</span>
-                        <a href="https://wa.me/201035153618?text=أريد%20الاستفسار%20عن%20نظام%20إدارة%20خاص" target="_blank" class="text-whatsappGreen font-bold text-xs sm:text-sm underline" data-i18n="card_click_here">اضغط هنا</a>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 2. قسم لماذا تحتاج النظام -->
-    <section id="why-me" class="py-12 sm:py-20 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/25">
-        <div class="w-full max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 space-y-3">
-                <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="why_badge">إجابات واضحة لكل صاحب شركة</span>
-                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="why_title">ليه برامج الإدارة الجاهزة أو الشغل اليدوي بيكبدك خسائر؟</h2>
-                <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed mt-2 px-2" data-i18n="why_desc">
-                    معظم أصحاب البيزنس بيضيعوا وقتهم وفلوسهم في تتبع الحسابات والعملاء بالورقة والقلم أو ببرامج تقليدية معقدة. النظام البرمجي المخصص بيحل لك المشكلة من الجذور.
+    <!-- Services Section -->
+    <section id="services" class="py-28 bg-bgSecondary border-t border-customBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Digital Solutions Designed Around Your Business.</h2>
+                <p class="text-textSecondary">Comprehensive web design, custom software development, and specialized digital solutions.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-primaryAccent/10 flex items-center justify-center text-primaryAccent">
+                        <i data-lucide="layout" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Business Websites</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Professional websites that establish credibility, communicate business identity, and present services clearly.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-secondaryAccent">
+                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">E-Commerce Websites</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Modern online stores designed to showcase products, improve navigation, and provide a convenient shopping experience.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Custom Business Systems</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Tailored web applications and administrative platforms designed to organize operations and simplify daily workflows.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-400">
+                        <i data-lucide="building-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Showroom & Real Estate</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Visually impressive websites for showrooms, property businesses, furniture brands, and product presentations.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Landing Pages</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Focused digital experiences designed to present offers, communicate value, and encourage customer inquiries.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-3xl space-y-4 hover:border-primaryAccent transition">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-500/10 flex items-center justify-center text-rose-400">
+                        <i data-lucide="refresh-cw" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Website Redesign</h3>
+                    <p class="text-sm text-textSecondary leading-relaxed">Transform outdated websites into modern, professional, responsive digital experiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-28 bg-bgMain border-t border-customBorder">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Portfolio Projects</h2>
+                <p class="text-textSecondary">Real business management systems, e-commerce concepts, and interactive creative experiences built with precision.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between hover:border-primaryAccent/50 transition duration-300">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-primaryAccent/10 text-primaryAccent text-xs font-semibold">Business System</span>
+                            <span class="text-xs text-textSecondary font-mono">Real Project</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-textPrimary">EL TOHAMMY PRO</h3>
+                        <p class="text-sm text-textSecondary leading-relaxed">
+                            A customized administrative and accounting management system designed for a motorcycle showroom to organize inventory, sales, installments, and financials.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-customBorder flex items-center justify-between">
+                        <span class="text-xs text-textSecondary">Showroom Management</span>
+                        <a href="https://ahmadfathi561-collab.github.io/El_Tohammy1/" target="_blank" class="px-4 py-2 rounded-xl bg-primaryAccent text-white text-xs font-semibold hover:bg-blue-600 transition flex items-center gap-1.5">
+                            Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between hover:border-secondaryAccent/50 transition duration-300">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-secondaryAccent text-xs font-semibold">E-Commerce</span>
+                            <span class="text-xs text-textSecondary font-mono">Concept Project</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-textPrimary">AURORA</h3>
+                        <p class="text-sm text-textSecondary leading-relaxed">
+                            A conceptual e-commerce experience demonstrating modern online store design, premium visual presentation, and seamless shopping workflows.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-customBorder flex items-center justify-between">
+                        <span class="text-xs text-textSecondary">Shopping Experience</span>
+                        <a href="https://ahmadfathi561-collab.github.io/AURORA/" target="_blank" class="px-4 py-2 rounded-xl bg-secondaryAccent text-bgMain text-xs font-semibold hover:opacity-90 transition flex items-center gap-1.5">
+                            Live Store <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-panel rounded-3xl p-6 flex flex-col justify-between hover:border-purple-500/50 transition duration-300">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-400 text-xs font-semibold">Creative Project</span>
+                            <span class="text-xs text-textSecondary font-mono">Interactive Game</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-textPrimary">SUNSET ESCAPE</h3>
+                        <p class="text-sm text-textSecondary leading-relaxed">
+                            An interactive 3D endless-runner gaming experience created to demonstrate creative development, gameplay interaction, and browser physics.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-customBorder flex items-center justify-between">
+                        <span class="text-xs text-textSecondary">Game Development</span>
+                        <a href="https://sunset-escape-endless-run.vercel.app/" target="_blank" class="px-4 py-2 rounded-xl bg-purple-600 text-white text-xs font-semibold hover:bg-purple-700 transition flex items-center gap-1.5">
+                            Play Live <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-28 bg-bgSecondary border-t border-customBorder">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <span class="px-3 py-1 rounded-full bg-primaryAccent/10 text-primaryAccent text-xs font-semibold">ABOUT AHMED FATHY</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Creative Thinking Meets Practical Development.</h2>
+                <p class="text-textSecondary leading-relaxed">
+                    I'm Ahmed Fathy, a web designer and digital solutions developer passionate about creating professional digital experiences. I work on transforming business ideas into modern websites, e-commerce experiences, and customized web systems.
+                </p>
+                <p class="text-textSecondary leading-relaxed">
+                    My approach combines visual creativity, practical problem-solving, and attention to technical details. I believe a successful digital product should not only look impressive but should also serve a clear purpose and create real value for its users.
                 </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-right w-full">
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl shadow-md">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="feat_1_title">1. القضاء على الأخطاء البشرية</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="feat_1_desc">
-                        النسيان، أخطاء الحسابات اليدوية، وتداخل مواعيد العملاء تكلفك عملائك ومصداقيتك. النظام الذكي يؤتمت كل شيء بدقة متناهية.
-                    </p>
-                </div>
-
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl shadow-md">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="feat_2_title">2. توفير مئات ساعات العمل</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="feat_2_desc">
-                        بدلاً من قضاء اليوم كله في متابعة الفواتير والتقارير، سيظهر لك ملخص شامل لحركة شركتك ومبيعاتك بنقرة زر واحدة.
-                    </p>
-                </div>
-
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-primaryBlue/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shadow-md">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="feat_3_title">3. اتخاذ قرارات مبنية على أرقام</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="feat_3_desc">
-                        تعرف تماماً أي المنتجات أو الخدمات تحقق لك أعلى أرباح، وأيها يحتاج تحسين، مما يضاعف نمو مشروعك بسرعة أكبر.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. حاسبة الوقت -->
-    <section id="calculator" class="py-12 sm:py-20 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/40">
-        <div class="w-full max-w-5xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
-                <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="calc_badge">تجربة عملية تفاعلية</span>
-                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="calc_title">حاسبة الوقت الموفر بناءً على طبيعة عملك</h2>
-                <p class="text-slate-300 text-sm sm:text-base mt-2 px-2" data-i18n="calc_desc">حدد عدد عملائك واختر طبيعة وسرعة تسجيل البيانات لديهم.</p>
-            </div>
-
-            <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center bg-cardBg border border-slate-800 p-6 sm:p-8 lg:p-12 rounded-3xl shadow-2xl hover-lift">
-                <div class="space-y-6 text-right w-full">
-                    <div>
-                        <label class="block text-sm sm:text-base font-semibold text-slate-200 mb-2" data-i18n="calc_label_clients">عدد العملاء أو المعاملات شهرياً:</label>
-                        <input type="range" id="clientsRange" min="100" max="5000" step="100" value="1000" oninput="calculateROI()" class="w-full accent-primaryBlue cursor-pointer h-2 bg-slate-800 rounded-lg">
-                        <div class="flex justify-between text-xs sm:text-sm text-slate-300 mt-2">
-                            <span data-i18n="calc_c1">100 عميل</span>
-                            <span id="clientsVal" class="text-primaryBlue font-bold text-sm sm:text-base">1,000 عميل</span>
-                            <span data-i18n="calc_c2">5,000+ عميل</span>
+            <div class="lg:col-span-6">
+                <div class="glass-panel p-8 rounded-3xl space-y-6">
+                    <h3 class="text-xl font-bold">Core Expertise & Technologies</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
+                            <h4 class="font-semibold text-sm text-primaryAccent">Frontend Development</h4>
+                            <p class="text-xs text-textSecondary mt-1">React, Tailwind CSS, JavaScript</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
+                            <h4 class="font-semibold text-sm text-secondaryAccent">UI/UX Design</h4>
+                            <p class="text-xs text-textSecondary mt-1">Responsive Design, Wireframing</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
+                            <h4 class="font-semibold text-sm text-purple-400">Business Applications</h4>
+                            <p class="text-xs text-textSecondary mt-1">Dashboards, Management Systems</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
+                            <h4 class="font-semibold text-sm text-amber-400">E-Commerce Solutions</h4>
+                            <p class="text-xs text-textSecondary mt-1">Store Fronts, Catalogs</p>
                         </div>
                     </div>
-
-                    <div class="mt-4">
-                        <label class="block text-sm sm:text-base font-semibold text-slate-200 mb-2" data-i18n="calc_label_speed">طبيعة وسرعة إدخال بيانات العملاء:</label>
-                        <select id="speedType" onchange="calculateROI()" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-sm sm:text-base text-white focus:outline-none focus:border-primaryBlue cursor-pointer">
-                            <option value="3" data-i18n="speed_fast">سريعة جداً (بيانات خفيفة - أقل من 3 دقائق للعميل)</option>
-                            <option value="7" selected data-i18n="speed_med">متوسطة السرعة (تسجيل عادي - حوالي 5 إلى 7 دقائق)</option>
-                            <option value="15" data-i18n="speed_slow">بطيئة / معقدة (بيانات وحسابات تفصيلية - أكثر من 15 دقيقة)</option>
-                        </select>
-                    </div>
-
-                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-slate-300 leading-relaxed mt-4 shadow-inner">
-                        <i class="fa-solid fa-lightbulb text-primaryBlue ml-1"></i> <span data-i18n="calc_tip">هذه الأداة تظهر لك قوة تفاعل البرمجيات والحلول الذكية.</span>
-                    </div>
-                </div>
-
-                <div class="w-full p-6 sm:p-8 rounded-2xl bg-slate-900 border border-whatsappGreen/30 text-center space-y-6 shadow-xl flex flex-col justify-center">
-                    <span class="text-xs sm:text-sm text-slate-300 uppercase tracking-widest" data-i18n="calc_res_title">إجمالي الساعات المهدرة يدوياً شهرياً</span>
-                    <div class="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-whatsappGreen my-2" id="savedHours">
-                        117 ساعة
-                    </div>
-                    <p class="text-xs sm:text-sm text-slate-200 px-2" data-i18n="calc_res_desc">هذا الوقت المهدر يمكن تحويله إلى زيادة في الإنتاجية والمبيعات.</p>
-                    
-                    <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20جربت%20حاسبة%20العائد%20وأريد%20تنفيذ%20نظام%20مشابه%20لشركتي" target="_blank" class="w-full bg-whatsappGreen text-white font-bold py-4 rounded-xl hover:opacity-90 transition-all shadow-lg shadow-whatsappGreen/30 flex items-center justify-center gap-2 text-sm sm:text-base mt-2">
-                        <i class="fa-brands fa-whatsapp text-xl"></i> <span data-i18n="calc_wa_btn">اطلب نظامك عبر واتساب</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. الأنظمة الجاهزة -->
-    <section id="services" class="py-12 sm:py-20 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800">
-        <div class="w-full max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14 space-y-3">
-                <span class="text-primaryBlue text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="serv_badge">حلول برمجية مخصصة</span>
-                <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black custom-heading-spacing px-2" data-i18n="serv_title">ما هو النظام الذي تحتاجه في نشاطك؟</h2>
-                <p class="text-slate-300 text-sm sm:text-base mt-2 px-2" data-i18n="serv_desc">اختر النظام الأقرب لطبيعة عملك، وتواصل معي مباشرة لنناقش تفاصيله وميزانيته.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-28 bg-bgMain border-t border-customBorder">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="mb-12 space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Let's Build Something That Moves Your Business Forward.</h2>
+                <p class="text-textSecondary">Have a business idea or a project in mind? Click below to open the official project request form and connect directly with my CRM system.</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
-                        <i class="fa-solid fa-shop"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="s1_title">أنظمة المعارض والمتاجر</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="s1_desc">إدارة كاملة للمنتجات، المخازن، حسابات الأقساط والكاش، ومتابعة الأرباح اليومية.</p>
-                    <a href="https://wa.me/201035153618?text=أحمد،%20أريد%20الاستفسار%20عن%20تنفيذ%20نظام%20معارض%20ومخازن" target="_blank" class="text-whatsappGreen text-xs sm:text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all pt-3">
-                        <span data-i18n="order_wa">اطلب هذا النظام عبر واتساب</span> <i class="fa-solid fa-arrow-left"></i>
-                    </a>
+            <div class="glass-panel p-10 sm:p-16 rounded-3xl space-y-6 glow-blue">
+                <div class="w-16 h-16 rounded-2xl bg-primaryAccent/10 text-primaryAccent mx-auto flex items-center justify-center">
+                    <i data-lucide="send" class="w-8 h-8"></i>
                 </div>
-
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
-                        <i class="fa-solid fa-calendar-check"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="s2_title">أنظمة الحجوزات والمواعيد</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="s2_desc">جدولة مواعيد العملاء للعيادات، مراكز الخدمات، ومزودي الصيانة مع تأكيد المواعيد.</p>
-                    <a href="https://wa.me/201035153618?text=أحمد،%20أريد%20الاستفسار%20عن%20تنفيذ%20نظام%20حجوزات%20ومواعيد" target="_blank" class="text-whatsappGreen text-xs sm:text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all pt-3">
-                        <span data-i18n="order_wa">اطلب هذا النظام عبر واتساب</span> <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
-
-                <div class="p-6 sm:p-8 rounded-3xl bg-cardBg border border-slate-800 hover:border-whatsappGreen/50 hover-lift space-y-4 w-full">
-                    <div class="w-14 h-14 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 flex items-center justify-center text-whatsappGreen text-2xl shadow-md">
-                        <i class="fa-solid fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-lg sm:text-xl font-bold mt-2" data-i18n="s3_title">لوحات تحكم الإدارة (Dashboards)</h3>
-                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mt-2" data-i18n="s3_desc">لوحات قياس أداء ومتابعة سير العمل لموظفيك بدقة، مع تقارير مالية وإدارية لحظية.</p>
-                    <a href="https://wa.me/201035153618?text=أحمد،%20أريد%20الاستفسار%20عن%20تنفيذ%20لوحة%20تحكم%20مخصصة" target="_blank" class="text-whatsappGreen text-xs sm:text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all pt-3">
-                        <span data-i18n="order_wa">اطلب هذا النظام عبر واتساب</span> <i class="fa-solid fa-arrow-left"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- أداة المساعد الذكي ثنائي اللغة وتخزين الأسئلة أوتوماتيكياً -->
-    <div id="aiChatWidget" class="fixed bottom-5 right-5 z-50">
-        <!-- زر فتح الشات -->
-        <button onclick="toggleAiChat()" id="aiChatBtn" class="w-14 h-14 bg-primaryBlue text-white rounded-full shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-all border border-blue-400/30">
-            <i class="fa-solid fa-robot"></i>
-        </button>
-
-        <!-- صندوق المحادثة الذكي -->
-        <div id="aiChatBox" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-80 bg-cardBg border border-slate-700 rounded-2xl shadow-2xl overflow-hidden flex flex-col">
-            <div class="bg-primaryBlue p-4 text-white flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-robot"></i>
-                    <span class="font-bold text-sm" data-i18n="chat_header">مستشارك الذكي (Ahmed Fathy AI)</span>
-                </div>
-                <button onclick="toggleAiChat()" class="text-white hover:text-slate-200"><i class="fa-solid fa-xmark text-lg"></i></button>
-            </div>
-            
-            <div id="aiChatMessages" class="p-3 h-64 overflow-y-auto space-y-3 text-xs sm:text-sm text-slate-200 bg-slate-950/60">
-                <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%]" data-i18n="chat_welcome">
-                    أهلاً بك! أنا مساعد المهندس أحمد فتحي الذكي. اسألني عن أي تفاصيل، فوائد، أسعار، أو مميزات أنظمتنا وهرد عليك فوراً!
-                </div>
-            </div>
-
-            <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-                <input type="text" id="aiUserInput" data-i18n-placeholder="chat_placeholder" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white focus:outline-none focus:border-primaryBlue" onkeypress="handleAiKey(event)">
-                <button onclick="sendAiMessage()" class="bg-primaryBlue text-white px-3 py-2 rounded-xl text-xs sm:text-sm font-bold hover:opacity-90 transition-all">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 5. قسم التواصل -->
-    <section id="contact" class="py-12 sm:py-20 flex items-center justify-center relative w-full px-4 sm:px-6 border-t border-slate-800 bg-cardBg/25">
-        <div class="w-full max-w-4xl mx-auto bg-cardBg border border-whatsappGreen/40 p-6 sm:p-10 lg:p-14 rounded-3xl shadow-2xl text-center space-y-6 relative hover-lift">
-            <div class="w-18 h-18 sm:w-20 sm:h-20 bg-whatsappGreen/20 text-whatsappGreen rounded-full flex items-center justify-center mx-auto text-3xl sm:text-4xl animate-bounce shadow-lg">
-                <i class="fa-brands fa-whatsapp"></i>
-            </div>
-            <div class="space-y-3">
-                <span class="text-whatsappGreen text-xs sm:text-sm font-bold uppercase tracking-widest inline-block mb-1 shadow-sm" data-i18n="contact_badge">تواصل مباشر وسريع مع أحمد فتحي</span>
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black leading-snug px-2" data-i18n="contact_title">جاهز لنقل عملك إلى المستوى التقني التالي؟</h2>
-                <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mt-2 px-2" data-i18n="contact_desc">
-                    تواصل معي مباشرة عبر واتساب على الرقم <span class="text-white font-bold" dir="ltr">01035153618</span> أو راسلني عبر البريد الإلكتروني المباشر: <span class="text-primaryBlue font-bold select-all" dir="ltr">ahmadfathi561@gmail.com</span> لنبدأ فوراً.
+                <h3 class="text-2xl font-bold">Ready to start your digital journey?</h3>
+                <p class="text-textSecondary max-w-lg mx-auto text-sm">
+                    Fill out the project scope, budget, and timeline details through my secure client portal.
                 </p>
-            </div>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 pt-4 w-full">
-                <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20أريد%20البدء%20في%20تنفيذ%20مشروعي%20البرمجي%20معك" target="_blank" class="w-full sm:w-auto bg-whatsappGreen text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base shadow-xl shadow-whatsappGreen/30 flex items-center justify-center gap-3">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> <span data-i18n="contact_wa_btn">افتح محادثة واتساب الآن</span>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61594261439402" target="_blank" class="w-full sm:w-auto bg-slate-900 border border-slate-700 text-white px-6 sm:px-8 py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-facebookBlue hover:border-facebookBlue transition-all flex items-center justify-center gap-2 shadow-md">
-                    <i class="fa-brands fa-facebook-f text-facebookBlue"></i> <span data-i18n="contact_fb_btn">زور صفحتي على فيسبوك</span>
-                </a>
+                <div class="pt-4">
+                    <a href="https://airtable.com/appNPUYOT6lgHF4NH/pagFdwduK8s9TVuHR/form" target="_blank" class="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-xl bg-primaryAccent text-white font-bold hover:bg-blue-600 transition shadow-xl shadow-blue-500/25 text-base">
+                        Open Project Request Form <i data-lucide="external-link" class="w-5 h-5"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- التذييل -->
-    <footer class="w-full py-6 sm:py-8 border-t border-slate-800 text-center text-xs sm:text-sm text-slate-400 bg-slate-950 space-y-2 px-4">
-        <p data-i18n="footer_rights">© 2026 أحمد فتحي. جميع الحقوق محفوظة لتقديم الحلول البرمجية وتطوير الأنظمة الذكية.</p>
-        <p class="text-slate-300">للتواصل المباشر: 01035153618 | البريد الإلكتروني: <span class="text-white select-all" dir="ltr">ahmadfathi561@gmail.com</span></p>
+    <!-- Footer -->
+    <footer class="py-8 bg-bgSecondary border-t border-customBorder text-center text-xs text-textSecondary">
+        <p>© 2026 Ahmed Fathy. All rights reserved. Designed with purpose and built with precision.</p>
     </footer>
 
     <script>
-        const translations = {
-            ar: {
-                brand_name: "Ahmed Fathy",
-                brand_sub: "| مطور ومستشار تقني",
-                whatsapp_btn: "تواصل واتساب",
-                chat_header: "مستشارك الذكي (Ahmed Fathy AI)",
-                chat_welcome: "أهلاً بك! أنا مساعد المهندس أحمد فتحي الذكي. اسألني عن أي تفاصيل، فوائد، أسعار، أو مميزات أنظمتنا وهرد عليك فوراً!",
-                chat_placeholder: "اكتب استفسارك هنا...",
-                nav_home: "الرئيسية",
-                nav_why: "لماذا تحتاج النظام؟",
-                nav_calc: "حاسبة الوقت",
-                nav_services: "الأنظمة الجاهزة",
-                nav_contact: "تواصل واتساب",
-                hero_badge: "أنت تقرأ نموذجاً حياً لأعلى معايير البرمجة وإدارة الأعمال",
-                hero_title_1: "حوّل فوضى الأوراق والبيانات إلى",
-                hero_title_2: "نظام رقمي يدير أرباحك تلقائياً",
-                hero_desc_1: "أنا",
-                hero_desc_2: "أساعد أصحاب الشركات والمعارض والمتاجر على بناء منصات وأنظمة ويب خاصة بهم لتوفير الوقت، منع الأخطاء، ومضاعفة المبيعات بأعلى جودة واحترافية.",
-                hero_wa_btn: "ابدأ محادثة واتساب الآن",
-                hero_fb_btn: "تابع صفحتي الشخصية",
-                card_status_title: "حالة النظام والأنشطة",
-                card_status_live: "يعمل بكفاءة 100%",
-                card_speed: "سرعة الاستجابة",
-                card_security: "حماية البيانات",
-                card_encrypted: "مشفرة",
-                card_footer_text: "تواصل معي مباشرة لتنفيذ نظام خاص بك",
-                card_click_here: "اضغط هنا",
-                why_badge: "إجابات واضحة لكل صاحب شركة",
-                why_title: "ليه برامج الإدارة الجاهزة أو الشغل اليدوي بيكبدك خسائر؟",
-                why_desc: "معظم أصحاب البيزنس بيضيعوا وقتهم وفلوسهم في تتبع الحسابات والعملاء بالورقة والقلم أو ببرامج تقليدية معقدة. النظام البرمجي المخصص بيحل لك المشكلة من الجذور.",
-                feat_1_title: "1. القضاء على الأخطاء البشرية",
-                feat_1_desc: "النسيان، أخطاء الحسابات اليدوية، وتداخل مواعيد العملاء تكلفك عملائك ومصداقيتك. النظام الذكي يؤتمت كل شيء بدقة متناهية.",
-                feat_2_title: "2. توفير مئات ساعات العمل",
-                feat_2_desc: "بدلاً من قضاء اليوم كله في متابعة الفواتير والتقارير، سيظهر لك ملخص شامل لحركة شركتك ومبيعاتك بنقرة زر واحدة.",
-                feat_3_title: "3. اتخاذ قرارات مبنية على أرقام",
-                feat_3_desc: "تعرف تماماً أي المنتجات أو الخدمات تحقق لك أعلى أرباح، وأيها يحتاج تحسين، مما يضاعف نمو مشروعك بسرعة أكبر.",
-                calc_badge: "تجربة عملية تفاعلية",
-                calc_title: "حاسبة الوقت الموفر بناءً على طبيعة عملك",
-                calc_desc: "حدد عدد عملائك واختر طبيعة وسرعة تسجيل البيانات لديهم.",
-                calc_label_clients: "عدد العملاء أو المعاملات شهرياً:",
-                calc_c1: "100 عميل",
-                calc_c2: "5,000+ عميل",
-                calc_label_speed: "طبيعة وسرعة إدخال بيانات العملاء:",
-                speed_fast: "سريعة جداً (بيانات خفيفة - أقل من 3 دقائق للعميل)",
-                speed_med: "متوسطة السرعة (تسجيل عادي - حوالي 5 إلى 7 دقائق)",
-                speed_slow: "بطيئة / معقدة (بيانات وحسابات تفصيلية - أكثر من 15 دقيقة)",
-                calc_tip: "هذه الأداة تظهر لك قوة تفاعل البرمجيات والحلول الذكية.",
-                calc_res_title: "إجمالي الساعات المهدرة يدوياً شهرياً",
-                calc_res_desc: "هذا الوقت المهدر يمكن تحويله إلى زيادة في الإنتاجية والمبيعات.",
-                calc_wa_btn: "اطلب نظامك عبر واتساب",
-                serv_badge: "حلول برمجية مخصصة",
-                serv_title: "ما هو النظام الذي تحتاجه في نشاطك؟",
-                serv_desc: "اختر النظام الأقرب لطبيعة عملك، وتواصل معي مباشرة لنناقش تفاصيله وميزانيته.",
-                s1_title: "أنظمة المعارض والمتاجر",
-                s1_desc: "إدارة كاملة للمنتجات، المخازن، حسابات الأقساط والكاش، ومتابعة الأرباح اليومية.",
-                s2_title: "أنظمة الحجوزات والمواعيد",
-                s2_desc: "جدولة مواعيد العملاء للعيادات، مراكز الخدمات، ومزودي الصيانة مع تأكيد المواعيد.",
-                s3_title: "لوحات تحكم الإدارة (Dashboards)",
-                s3_desc: "لوحات قياس أداء ومتابعة سير العمل لموظفيك بدقة، مع تقارير مالية وإدارية لحظية.",
-                order_wa: "اطلب هذا النظام عبر واتساب",
-                contact_badge: "تواصل مباشر وسريع مع أحمد فتحي",
-                contact_title: "جاهز لنقل عملك إلى المستوى التقني التالي؟",
-                contact_desc: "تواصل معي مباشرة عبر واتساب على الرقم 01035153618 أو راسلني عبر البريد الإلكتروني المباشر: ahmadfathi561@gmail.com لنبدأ فوراً.",
-                contact_wa_btn: "افتح محادثة واتساب الآن",
-                contact_fb_btn: "زور صفحتي على فيسبوك",
-                footer_rights: "© أحمد فتحي. جميع الحقوق محفوظة لتقديم الحلول البرمجية وتطوير الأنظمة الذكية."
-            },
-            en: {
-                brand_name: "Ahmed Fathy",
-                brand_sub: "| Software Developer & Consultant",
-                whatsapp_btn: "WhatsApp",
-                chat_header: "Smart Advisor (Ahmed Fathy AI)",
-                chat_welcome: "Welcome! I'm Ahmed Fathy's smart assistant. Ask me about details, benefits, pricing, or system features and I'll reply instantly!",
-                chat_placeholder: "Type your inquiry here...",
-                nav_home: "Home",
-                nav_why: "Why Need a System?",
-                nav_calc: "Time Calculator",
-                nav_services: "Ready Systems",
-                nav_contact: "Contact WhatsApp",
-                hero_badge: "You are viewing a live showcase of top-tier software standards",
-                hero_title_1: "Turn Paperwork & Data Chaos into a",
-                hero_title_2: "Digital System That Auto-Manages Profits",
-                hero_desc_1: "I am",
-                hero_desc_2: ". I help companies, showrooms, and stores build custom web platforms to save time, eliminate errors, and multiply sales with supreme quality.",
-                hero_wa_btn: "Start WhatsApp Chat Now",
-                hero_fb_btn: "Visit My Facebook",
-                card_status_title: "System & Activity Status",
-                card_status_live: "100% Operational",
-                card_speed: "Response Speed",
-                card_security: "Data Security",
-                card_encrypted: "Encrypted",
-                card_footer_text: "Contact me directly to build your custom system",
-                card_click_here: "Click Here",
-                why_badge: "Clear Answers for Every Business Owner",
-                why_title: "Why Generic Software or Manual Work Costs You Money?",
-                why_desc: "Most business owners waste time tracking accounts with pen and paper or complex legacy software. A custom programmed system solves your problems from the roots.",
-                feat_1_title: "1. Eliminate Human Errors",
-                feat_1_desc: "Forgetfulness, manual calculation mistakes, and overlapping appointments cost you clients and credibility. Smart systems automate everything flawlessly.",
-                feat_2_title: "2. Save Hundreds of Work Hours",
-                feat_2_desc: "Instead of spending all day tracking invoices and reports, you get a comprehensive summary of your company's movement with a single click.",
-                feat_3_title: "3. Data-Driven Decisions",
-                feat_3_desc: "Know exactly which products or services generate the highest profits, accelerating your business growth rapidly.",
-                calc_badge: "Interactive Experience",
-                calc_title: "Time Saver Calculator Based on Your Business",
-                calc_desc: "Set your client volume and choose the speed of data entry.",
-                calc_label_clients: "Clients or Transactions per Month:",
-                calc_c1: "100 Clients",
-                calc_c2: "5,000+ Clients",
-                calc_label_speed: "Client Data Entry Speed:",
-                speed_fast: "Very Fast (Light data - under 3 mins per client)",
-                speed_med: "Medium (Normal entry - about 5 to 7 mins)",
-                speed_slow: "Slow / Complex (Detailed calculations - over 15 mins)",
-                calc_tip: "This tool demonstrates the interactive power of modern software.",
-                calc_res_title: "Total Manual Hours Wasted Monthly",
-                calc_res_desc: "This wasted time can be converted into increased productivity and sales.",
-                calc_wa_btn: "Request Your System via WhatsApp",
-                serv_badge: "Custom Software Solutions",
-                serv_title: "What System Does Your Business Need?",
-                serv_desc: "Choose the system closest to your work nature and contact me directly to discuss details and budget.",
-                s1_title: "Showrooms & Stores Systems",
-                s1_desc: "Full management of products, inventory, installment and cash accounts, and daily profit tracking.",
-                s2_title: "Booking & Appointment Systems",
-                s2_desc: "Scheduling client appointments for clinics, service centers, and maintenance providers with confirmation.",
-                s3_title: "Management Dashboards",
-                s3_desc: "Performance tracking and workflow dashboards for your staff with real-time financial and administrative reports.",
-                order_wa: "Request This System via WhatsApp",
-                contact_badge: "Direct & Fast Contact with Ahmed Fathy",
-                contact_title: "Ready to Take Your Business to the Next Tech Level?",
-                contact_desc: "Contact me directly via WhatsApp at 01035153618 or via Email at ahmadfathi561@gmail.com to get started immediately.",
-                contact_wa_btn: "Open WhatsApp Chat Now",
-                contact_fb_btn: "Visit My Facebook Page",
-                footer_rights: "© 2026 Ahmed Fathy. All rights reserved for software solutions and smart system development."
-            }
-        };
-
-        // إدارة اللغة بشكل دائم وثابت عبر LocalStorage
-        let currentLang = localStorage.getItem('site_lang') || 'ar';
-
-        window.addEventListener('DOMContentLoaded', () => {
-            applyLanguage(currentLang);
-        });
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            localStorage.setItem('site_lang', currentLang);
-            applyLanguage(currentLang);
-        }
-
-        function applyLanguage(lang) {
-            currentLang = lang;
-            document.documentElement.setAttribute('lang', currentLang);
-            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('langBtnText').innerText = currentLang === 'ar' ? 'EN' : 'AR';
-
-            const elements = document.querySelectorAll('[data-i18n]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
-            });
-
-            const placeholderKey = document.getElementById('aiUserInput').getAttribute('data-i18n-placeholder');
-            if (translations[currentLang][placeholderKey]) {
-                document.getElementById('aiUserInput').placeholder = translations[currentLang][placeholderKey];
-            }
-
-            calculateROI();
-        }
-
-        function calculateROI() {
-            const clients = document.getElementById('clientsRange').value;
-            const avgMinutes = document.getElementById('speedType').value;
-            
-            document.getElementById('clientsVal').innerText = Number(clients).toLocaleString() + (currentLang === 'ar' ? ' عميل' : ' Clients');
-
-            const totalHours = Math.round((clients * avgMinutes) / 60);
-            const unitText = currentLang === 'ar' ? ' ساعة' : ' Hours';
-            document.getElementById('savedHours').innerText = totalHours.toLocaleString() + unitText;
-        }
-
-        // مستشار ذكي متطور ثنائي اللغة مع تخزين الأسئلة في شيت
-        function toggleAiChat() {
-            const box = document.getElementById('aiChatBox');
-            box.classList.toggle('hidden');
-        }
-
-        function handleAiKey(e) {
-            if (e.key === 'Enter') {
-                sendAiMessage();
-            }
-        }
-
-        function sendAiMessage() {
-            const input = document.getElementById('aiUserInput');
-            const msg = input.value.trim();
-            if (!msg) return;
-
-            const chatMsgs = document.getElementById('aiChatMessages');
-            
-            chatMsgs.innerHTML += `<div class="bg-primaryBlue text-white p-2.5 rounded-xl max-w-[85%] mr-auto text-right">${msg}</div>`;
-            input.value = '';
-            chatMsgs.scrollTop = chatMsgs.scrollHeight;
-
-            // إرسال السؤال أوتوماتيكياً لملف Google Sheets في الخلفية
-            const sheetApiUrl = "https://script.google.com/macros/s/AKfycbxNhHMKf64dDVhV4icLBslWJZHFDfLjpBaSC6cANUFXoDJ94RmXyKjfTP-qgHcEAqRgJg/exec";
-            fetch(sheetApiUrl, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ question: msg })
-            }).catch(err => console.log("Sheet log error:", err));
-
-            setTimeout(() => {
-                let reply = "";
-                const text = msg.toLowerCase();
-
-                if (currentLang === 'en') {
-                    if (text.includes("who") || text.includes("about") || text.includes("developer")) {
-                        reply = "We are a specialized platform in web engineering and business management systems led by Engineer Ahmed Fathy, helping companies automate their workflow.";
-                    } else if (text.includes("price") || text.includes("cost") || text.includes("how much")) {
-                        reply = "Our pricing is customized based on your business size and exact needs to ensure maximum ROI. Contact us via WhatsApp or Email: ahmadfathi561@gmail.com";
-                    } else if (text.includes("store") || text.includes("shop") || text.includes("showroom")) {
-                        reply = "Great! We build integrated showroom and store management systems covering inventory, sales, and profit tracking. Would you like a demo?";
-                    } else {
-                        reply = "That's an important question! To give you the exact details tailored to your business, please contact Engineer Ahmed Fathy directly via WhatsApp or Email: ahmadfathi561@gmail.com";
-                    }
-                } else {
-                    if (text.includes("مين") || text.includes("من انتم") || text.includes("انت مين") || text.includes("عرفنا")) {
-                        reply = "إحنا منصة متخصصة في هندسة الويب وتطوير الأنظمة البرمجية وحلول إدارة الأعمال بقيادة المهندس أحمد فتحي. بنساعد الشركات والمعارض والمتاجر على أتمتة حساباتهم ومبيعاتهم.";
-                    } else if (text.includes("سعر") || text.includes("تكلفة") || text.includes("بكام") || text.includes("فلوس") || text.includes("كام")) {
-                        reply = "أسعار الأنظمة عندنا مش ثابتة لأن كل بيزنس ليه احتياجاته الخاصة؛ إحنا بنصمم النظام على مقاس نشاطك تماماً عشان تدفع في اللي يفيدك بجد وبأعلى قيمة مقابل سعر. تقدر تراسلنا مباشرة على الإيميل: ahmadfathi561@gmail.com";
-                    } else if (text.includes("فرق") || text.includes("ليه انت") || text.includes("مميزاتها") || text.includes("ليه اختارك"))  {
-                        reply = "الفرق بينا وبين غيرنا إننا مش بنبيع برامج جاهزة معقدة أو شغلة ورقية تقليدية؛ إحنا بنبني لك نظام ويب خاص بنشاطك (سريع، أمان عالي، بدون أخطاء بشرية، وبيوفر مئات ساعات العمل).";
-                    } else if (text.includes("ازاى") || text.includes("كيف") || text.includes("طريقة الشغل") || text.includes("خطوات")) {
-                        reply = "الموضوع أبسط ما يمكن: بتكلمنا نتناقش في تفاصيل نشاطك وطبيعة شغلك، وبنصمم لك النظام ونوريه لك كديمو حي، وبعدها بينطلق معاك ليدير أرباحك أوتوماتيك.";
-                    } else if (text.includes("فوائد") || text.includes("تاثير") || text.includes("ايه المستستفيد") || text.includes("مميزاتي")) {
-                        reply = "النظام بيوفر عليك وقت ضايع في الحسابات اليدوية، بيقضي تماماً على النسيان والأخطاء البشرية، وبيطلع لك تقارير ومبيعات دقيقة بنقرة زر واحدة عشان تاخد قرارات صحيحة تضاعف أرباحك.";
-                    } else if (text.includes("متجر") || text.includes("معرض") || text.includes("موتوسيكل") || text.includes("ساعات") || text.includes("ملابس") || text.includes("بيزنس")) {
-                        reply = "ممتاز جداً! نشاطك محتاج نظام إدارة مخازن ومعارض دقيق وسهل. تحب نحدد مكالمة سريعة أو نتواصل واتساب مع المهندس أحمد عشان نأكد لك التفاصيل والميزانية المناسبة؟";
-                    } else {
-                        reply = "سؤال ممتاز ومهم لبيزنس ناجح! وعشان نديك الإجابة الدقيقة ونفهم تفاصيل شغلك أكتر، أفضل وأسرع حل هو التواصل المباشر مع المهندس أحمد فتحي عبر الواتساب أو الإيميل: ahmadfathi561@gmail.com";
-                    }
-                }
-
-                const waBtnText = currentLang === 'en' ? 'WhatsApp' : 'واتساب';
-
-                chatMsgs.innerHTML += `
-                    <div class="bg-slate-900 border border-slate-800 p-2.5 rounded-xl max-w-[85%] space-y-2">
-                        <p>${reply}</p>
-                        <div class="flex flex-wrap gap-2 pt-1">
-                            <a href="https://wa.me/201035153618?text=مرحباً%20أحمد،%20سألت%20المساعد%20الذكي:%20(${encodeURIComponent(msg)})" target="_blank" class="bg-whatsappGreen text-white px-3 py-1.5 rounded-lg text-xs font-bold shadow hover:scale-105 transition-all">
-                                <i class="fa-brands fa-whatsapp ml-1"></i> ${waBtnText}
-                            </a>
-                        </div>
-                    </div>
-                `;
-                chatMsgs.scrollTop = chatMsgs.scrollHeight;
-            }, 600);
-        }
-
-        calculateROI();
-
-        const sections = document.querySelectorAll('section');
-        const navDots = document.querySelectorAll('.nav-dot');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 300) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navDots.forEach(dot => {
-                const dotSpan = dot.querySelector('span:first-child');
-                dotSpan.style.backgroundColor = '#64748B';
-                dotSpan.style.transform = 'scale(1)';
-                
-                if (dot.getAttribute('data-target') === current) {
-                    dotSpan.style.backgroundColor = current === 'contact' ? '#25D366' : '#2563EB';
-                    dotSpan.style.transform = 'scale(1.4)';
-                }
-            });
-        });
+        lucide.createIcons();
     </script>
-
 </body>
 </html>
