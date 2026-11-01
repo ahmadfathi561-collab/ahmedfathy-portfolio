@@ -32,8 +32,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { background-color: #090B10; color: #F5F6FA; font-family: 'Inter', sans-serif; }
-        .glass-panel { background: rgba(21, 27, 36, 0.75); backdrop-filter: blur(16px); border: 1px solid #252C37; }
+        body { background-color: #090B10; color: #F5F6FA; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass-panel { background: rgba(21, 27, 36, 0.85); backdrop-filter: blur(16px); border: 1px solid #252C37; }
         .glow-blue { box-shadow: 0 0 50px rgba(91, 140, 255, 0.12); }
     </style>
 </head>
@@ -267,9 +267,9 @@
                 </p>
             </div>
             <div class="lg:col-span-6">
-                <div class="glass-panel p-8 rounded-3xl space-y-6">
+                <div class="glass-panel p-6 sm:p-8 rounded-3xl space-y-6">
                     <h3 class="text-xl font-bold">Core Expertise & Technologies</h3>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
                             <h4 class="font-semibold text-sm text-primaryAccent">Frontend Development</h4>
                             <p class="text-xs text-textSecondary mt-1">React, Tailwind CSS, JavaScript</p>
@@ -279,4 +279,4 @@
                             <p class="text-xs text-textSecondary mt-1">Responsive Design, Wireframing</p>
                         </div>
                         <div class="p-4 rounded-xl bg-bgMain border border-customBorder">
-                            <h4 class="font-semibold text-sm text-purple-400">Business Ap
+                            <h4 class="font-sem
