@@ -30,124 +30,170 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
-      --bg: #f8fafc;
+      --bg: #f5f8ff;
       --panel: #ffffff;
-      --panel-alt: #f1f5f9;
-      --line: rgba(148, 163, 184, 0.25);
+      --panel-alt: #eef3fb;
+      --line: rgba(99, 102, 241, 0.16);
       --muted: #475569;
-      --text: #0f172a;
+      --text: #0b1120;
       --blue: #2563eb;
-      --cyan: #0891b2;
+      --cyan: #06b6d4;
+      --accent-purple: #7c3aed;
       --card-bg: #ffffff;
-      --nav-bg: rgba(248, 250, 252, 0.88);
-      --logo-bg: #0f172a;
+      --nav-bg: rgba(245, 248, 255, 0.84);
+      --logo-bg: linear-gradient(135deg, #0f172a, #1e293b);
       --logo-text: #ffffff;
     }
     .dark {
-      --bg: #080b12;
-      --panel: #0e1420;
-      --panel-alt: #121b2a;
-      --line: rgba(157,177,208,.14);
-      --muted: #9aa8bd;
-      --text: #f4f7fc;
+      --bg: #060913;
+      --panel: #0c1220;
+      --panel-alt: #11192c;
+      --line: rgba(129, 140, 248, 0.16);
+      --muted: #9aa8c7;
+      --text: #f8fafc;
       --blue: #6d8dff;
-      --cyan: #69d9e8;
+      --cyan: #38bdf8;
+      --accent-purple: #a78bfa;
       --card-bg: linear-gradient(145deg, rgba(19, 28, 43, 0.92), rgba(11, 16, 26, 0.96));
-      --nav-bg: rgba(8, 11, 18, 0.76);
-      --logo-bg: #ffffff;
-      --logo-text: #080b12;
+      --nav-bg: rgba(6, 9, 19, 0.78);
+      --logo-bg: linear-gradient(135deg, #ffffff, #e2e8f0);
+      --logo-text: #060913;
     }
     *{box-sizing:border-box}
     html{scroll-padding-top:100px}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Manrope,sans-serif;overflow-x:hidden;transition:background-color .3s ease, color .3s ease}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 82%)}
-    ::selection{background:rgba(59,130,246,.25);color:var(--text)}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Manrope,sans-serif;overflow-x:hidden;transition:background-color .35s ease, color .35s ease}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 15%, black 25%, transparent 78%)}
+    ::selection{background:rgba(99,102,241,.28);color:var(--text)}
     a{color:inherit;text-decoration:none}
     
     .container{max-width:1100px;width:100%;margin-inline:auto;padding-inline:24px;}
     @media(min-width: 640px){.container{padding-inline:36px;}}
     @media(min-width: 1280px){.container{padding-inline:40px;}}
 
-    .nav-shell{background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);transition:background .3s, border-color .3s}
-    .nav-link{color:var(--muted);transition:.25s}.nav-link:hover,.nav-link.active{color:var(--text);font-weight:700;}
-    .eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(59,130,246,0.3);background:rgba(59,130,246,0.06);padding:9px 13px;border-radius:999px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
-    .eyebrow-dot{height:7px;width:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 5px rgba(16,185,129,.12)}
-    .gradient-text{background:linear-gradient(100deg,var(--text) 8%,var(--blue) 52%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .nav-shell{background:var(--nav-bg);backdrop-filter:blur(22px) saturate(150%);border-bottom:1px solid var(--line);box-shadow:0 8px 32px rgba(2,6,23,.05);transition:background .3s, border-color .3s}
+    .dark .nav-shell{box-shadow:0 10px 36px rgba(0,0,0,.35)}
+    .nav-link{position:relative;color:var(--muted);transition:.25s}.nav-link:hover,.nav-link.active{color:var(--text);font-weight:700;}
+    .nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(99,102,241,0.28);background:linear-gradient(90deg,rgba(37,99,235,0.08),rgba(6,182,212,0.08));padding:9px 14px;border-radius:999px;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;box-shadow:0 6px 20px rgba(37,99,235,.08)}
+    .eyebrow-dot{height:7px;width:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 6px rgba(16,185,129,.18)}
+
+    .gradient-text{background:linear-gradient(105deg,var(--text) 5%,var(--blue) 48%,var(--accent-purple) 78%,var(--cyan) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero-title{font-size:clamp(2.8rem,6.5vw,5.5rem);line-height:1.02;letter-spacing:-.075em;font-weight:800}
-    .hero-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.15}
-    .dark .hero-orb{opacity:.27}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;padding:14px 19px;font-size:13px;font-weight:700;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+    .hero-orb{position:absolute;border-radius:50%;filter:blur(95px);pointer-events:none;opacity:.22}
+    .dark .hero-orb{opacity:.34}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:12px;padding:14px 20px;font-size:13px;font-weight:700;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,border-color .25s,background .25s}
     .btn:hover{transform:translateY(-3px)}
-    .btn-primary{background:linear-gradient(110deg,#2563eb,#1d4ed8);box-shadow:0 12px 35px rgba(37,99,235,.25);color:#fff}
-    .dark .btn-primary{background:linear-gradient(110deg,#6284ff,#4770eb);box-shadow:0 12px 35px rgba(78,111,239,.24)}
-    .btn-primary:hover{box-shadow:0 16px 42px rgba(37,99,235,.35)}
-    .btn-secondary{border:1px solid var(--line);background:var(--panel);color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.03)}
-    .btn-secondary:hover{border-color:var(--blue)}
-    .surface{background:var(--panel);border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.06);transition:background .3s, border-color .3s, box-shadow .3s}
-    .dark .surface{box-shadow:0 24px 80px rgba(0,0,0,.2)}
-    .hero-visual{position:relative;border:1px solid var(--line);border-radius:26px;background:var(--panel);box-shadow:0 30px 90px rgba(0,0,0,.08),0 0 60px rgba(37,99,235,.06);overflow:hidden}
-    .dark .hero-visual{background:linear-gradient(145deg,rgba(24,35,55,.95),rgba(10,15,25,.98));box-shadow:0 30px 100px rgba(0,0,0,.35),0 0 80px rgba(87,119,255,.12)}
-    .hero-visual:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 8%,rgba(8,145,178,.08),transparent 34%),radial-gradient(circle at 12% 90%,rgba(37,99,235,.08),transparent 40%);pointer-events:none}
+    .btn-primary{background:linear-gradient(115deg,#2563eb 0%,#4f46e5 55%,#0891b2 100%);box-shadow:0 14px 36px rgba(37,99,235,.28),inset 0 1px 0 rgba(255,255,255,.25);color:#fff}
+    .dark .btn-primary{background:linear-gradient(115deg,#6284ff 0%,#7c5cff 55%,#22d3ee 100%);box-shadow:0 14px 40px rgba(99,102,241,.32),inset 0 1px 0 rgba(255,255,255,.3)}
+    .btn-primary:hover{box-shadow:0 18px 44px rgba(37,99,235,.38)}
+    .btn-secondary{border:1px solid var(--line);background:var(--panel);color:var(--text);box-shadow:0 6px 22px rgba(15,23,42,.04)}
+    .btn-secondary:hover{border-color:var(--blue);box-shadow:0 10px 26px rgba(37,99,235,.12)}
+
+    .surface{background:var(--panel);border:1px solid var(--line);box-shadow:0 18px 45px rgba(15,23,42,.05),0 1px 0 rgba(255,255,255,.7) inset;transition:transform .35s cubic-bezier(.22,1,.36,1),background .3s,border-color .3s,box-shadow .35s}
+    .dark .surface{box-shadow:0 24px 70px rgba(0,0,0,.32),0 1px 0 rgba(255,255,255,.04) inset}
+
+    .hero-visual{position:relative;border:1px solid rgba(99,102,241,.24);border-radius:28px;background:linear-gradient(155deg,rgba(255,255,255,.96),rgba(238,244,255,.92));box-shadow:0 32px 90px rgba(15,23,42,.12),0 0 65px rgba(37,99,235,.1);overflow:hidden}
+    .dark .hero-visual{background:linear-gradient(150deg,rgba(24,35,62,.95),rgba(9,14,26,.98));box-shadow:0 34px 105px rgba(0,0,0,.48),0 0 85px rgba(109,141,255,.16)}
+    .hero-visual:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 10%,rgba(6,182,212,.14),transparent 38%),radial-gradient(circle at 14% 92%,rgba(124,58,237,.13),transparent 42%);pointer-events:none}
+
     .code-line{font:12px/2 "DM Mono",monospace;color:var(--muted)}
     .float-card{animation:float 6s ease-in-out infinite}
     .float-card.delay{animation-delay:-2.5s}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-    .section-kicker{font:11px "DM Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+    .section-kicker{font:11px "DM Mono",monospace;letter-spacing:.17em;text-transform:uppercase;color:var(--blue)}
     .section-title{font-size:clamp(2rem,4vw,3.3rem);line-height:1.08;letter-spacing:-.055em;font-weight:800}
     .muted{color:var(--muted)}
-    .service-card{position:relative;overflow:hidden;transition:transform .3s,border-color .3s,background .3s}
-    .service-card:after{content:"";position:absolute;width:180px;height:180px;right:-100px;top:-110px;border-radius:50%;background:rgba(37,99,235,.06);filter:blur(35px);transition:.35s}
-    .dark .service-card:after{background:rgba(109,141,255,.12)}
-    .service-card:hover{transform:translateY(-6px);border-color:var(--blue);background:var(--panel-alt)}
+
+    .service-card{position:relative;overflow:hidden;transition:transform .32s cubic-bezier(.22,1,.36,1),border-color .32s,background .32s,box-shadow .32s}
+    .service-card:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,transparent,var(--blue),var(--cyan),transparent);opacity:0;transition:opacity .35s}
+    .service-card:after{content:"";position:absolute;width:190px;height:190px;right:-100px;top:-110px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.14),transparent 70%);filter:blur(28px);transition:.35s}
+    .dark .service-card:after{background:radial-gradient(circle,rgba(109,141,255,.22),transparent 70%)}
+    .service-card:hover{transform:translateY(-6px);border-color:rgba(99,102,241,.42);background:var(--panel-alt);box-shadow:0 24px 55px rgba(37,99,235,.1)}
+    .dark .service-card:hover{box-shadow:0 26px 65px rgba(0,0,0,.45),0 0 30px rgba(99,102,241,.12)}
+    .service-card:hover:before{opacity:1}
     .service-card:hover:after{transform:scale(1.5)}
-    .icon-box{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;}
-    .project-card{overflow:hidden;transition:transform .35s,border-color .35s}
-    .project-card:hover{transform:translateY(-7px);border-color:var(--blue)}
+
+    .icon-box{width:48px;height:48px;display:grid;place-items:center;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,var(--panel),var(--panel-alt));box-shadow:0 6px 18px rgba(15,23,42,.05)}
+
+    .project-card{overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s}
+    .project-card:hover{transform:translateY(-8px);border-color:rgba(99,102,241,.45);box-shadow:0 28px 65px rgba(15,23,42,.12)}
+    .dark .project-card:hover{box-shadow:0 30px 75px rgba(0,0,0,.5),0 0 36px rgba(99,102,241,.14)}
+
     .project-preview{height:220px;position:relative;overflow:hidden;background:var(--panel-alt);border-bottom:1px solid var(--line)}
-    .preview-window{position:absolute;inset:20px 20px 0;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;background:var(--panel);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.08);transition:transform .5s}
-    .project-card:hover .preview-window{transform:translateY(-7px) scale(1.015)}
+    .preview-window{position:absolute;inset:20px 20px 0;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;background:var(--panel);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.1);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+    .project-card:hover .preview-window{transform:translateY(-7px) scale(1.018)}
+
     .window-bar{height:22px;background:var(--panel-alt);display:flex;align-items:center;gap:4px;padding:0 9px;border-bottom:1px solid var(--line)}
     .window-bar i{width:5px;height:5px;border-radius:50%;background:var(--muted)}
+    .window-bar i:nth-child(1){background:#fb7185}
+    .window-bar i:nth-child(2){background:#fbbf24}
+    .window-bar i:nth-child(3){background:#34d399}
+
     .mock-layout{display:grid;grid-template-columns:34px 1fr;height:calc(100% - 22px)}
     .mock-sidebar{background:var(--panel-alt);padding:10px 7px;display:flex;flex-direction:column;gap:8px;border-right:1px solid var(--line)}
-    .mock-sidebar b{height:5px;border-radius:4px;background:var(--muted)}
+    .mock-sidebar b{height:5px;border-radius:4px;background:var(--muted);opacity:.55}
     .mock-main{padding:12px}
-    .mock-heading{height:9px;width:42%;border-radius:5px;background:var(--blue);margin-bottom:9px;opacity:.8}
-    .mock-sub{height:5px;width:68%;border-radius:5px;background:var(--muted);margin-bottom:12px;opacity:.6}
+    .mock-heading{height:9px;width:42%;border-radius:5px;background:linear-gradient(90deg,var(--blue),var(--cyan));margin-bottom:9px;opacity:.9}
+    .mock-sub{height:5px;width:68%;border-radius:5px;background:var(--muted);margin-bottom:12px;opacity:.5}
     .mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-    .mock-stats span{height:39px;border-radius:5px;background:var(--panel-alt);border:1px solid var(--line)}
-    .mock-chart{height:60px;margin-top:8px;border-radius:6px;background:linear-gradient(160deg,var(--panel-alt),var(--panel));position:relative;overflow:hidden;border:1px solid var(--line)}
+    .mock-stats span{height:39px;border-radius:6px;background:linear-gradient(145deg,var(--panel-alt),var(--panel));border:1px solid var(--line)}
+    .mock-chart{height:60px;margin-top:8px;border-radius:7px;background:linear-gradient(160deg,rgba(37,99,235,.08),var(--panel));position:relative;overflow:hidden;border:1px solid var(--line)}
     .mock-chart:after{content:"";position:absolute;left:8%;right:8%;bottom:12px;height:30px;border-top:2px solid var(--blue);border-radius:50%;transform:rotate(-9deg)}
-    .aurora-preview{background:radial-gradient(circle at 70% 30%,#334c69,#111c2e 60%,#0c1320)}
+
+    .aurora-preview{background:radial-gradient(circle at 72% 28%,#3b5978,#111c2e 62%,#0a101d)}
     .aurora-preview .preview-window{background:#f5f1e9}
-    .aurora-layout{height:100%;padding:17px 19px;color:#202b36;background:linear-gradient(120deg,#f7f3eb,#e9e4d9)}
+    .aurora-layout{height:100%;padding:17px 19px;color:#202b36;background:linear-gradient(120deg,#f9f6f0,#ebe5d8)}
     .aurora-nav{font-size:7px;letter-spacing:.16em;color:#536171;display:flex;justify-content:space-between}
     .aurora-copy{margin-top:24px;width:52%;font-family:Georgia,serif;font-size:21px;line-height:1.02;color:#17283b}
     .aurora-copy small{display:block;font:6px Inter,sans-serif;letter-spacing:.13em;margin-top:8px;color:#6b7887}
-    .aurora-product{position:absolute;right:20px;top:55px;width:70px;height:100px;border-radius:35px 35px 13px 13px;background:linear-gradient(120deg,#c5b89d,#f1e7d3 50%,#9a896f);box-shadow:12px 12px 24px #9e988c}
+    .aurora-product{position:absolute;right:20px;top:55px;width:70px;height:100px;border-radius:35px 35px 13px 13px;background:linear-gradient(120deg,#cbbd9e,#f5ebd6 50%,#9a896f);box-shadow:12px 12px 24px rgba(120,112,96,.38)}
+
+    .ai-preview{background:radial-gradient(circle at 25% 20%,#2e1065,#0f172a 65%,#060913)}
+    .ai-preview .preview-window{background:#0b1120;border-color:rgba(139,92,246,.35)}
+    .ai-preview .window-bar{background:#131c31;border-color:rgba(139,92,246,.22)}
+    .ai-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;padding:12px;height:calc(100% - 22px)}
+    .ai-chat{display:flex;flex-direction:column;gap:7px;justify-content:center}
+    .ai-bubble{padding:7px 9px;border-radius:8px;font-size:8px;line-height:1.35}
+    .ai-user{background:rgba(148,163,184,.15);color:#cbd5e1;align-self:flex-start;max-width:85%}
+    .ai-bot{background:linear-gradient(135deg,rgba(124,58,237,.42),rgba(37,99,235,.35));border:1px solid rgba(167,139,250,.4);color:#f8fafc;align-self:flex-end;max-width:92%}
+    .ai-sync{background:#111827;border:1px solid rgba(16,185,129,.28);border-radius:8px;padding:8px;display:flex;flex-direction:column;justify-content:space-between}
+    .ai-badge{font:7px "DM Mono",monospace;color:#34d399;display:flex;align-items:center;gap:4px}
+    .ai-badge:before{content:"";width:5px;height:5px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981}
+    .ai-rows{display:flex;flex-direction:column;gap:5px;margin-top:6px}
+    .ai-rows span{height:14px;border-radius:4px;background:rgba(255,255,255,.06);border-left:2px solid #8b5cf6;display:block}
+    .ai-rows span:nth-child(2){border-left-color:#10b981}
+    .ai-rows span:nth-child(3){border-left-color:#38bdf8}
+
     .game-preview{background:linear-gradient(160deg,#182044,#5b477b 55%,#e48a68)}
     .game-preview .preview-window{background:linear-gradient(180deg,#252e55,#9a5f75 70%,#eaa477)}
     .game-scene{position:absolute;inset:20px 20px 0;overflow:hidden;border-radius:12px 12px 0 0;background:linear-gradient(180deg,#242e57 0%,#87617d 62%,#e69b76 100%)}
-    .sun{position:absolute;width:48px;height:48px;border-radius:50%;background:#ffd29b;right:20px;top:18px;box-shadow:0 0 35px rgba(255,208,151,.5)}
+    .sun{position:absolute;width:48px;height:48px;border-radius:50%;background:#ffd29b;right:20px;top:18px;box-shadow:0 0 38px rgba(255,208,151,.65)}
     .road{position:absolute;left:25%;right:25%;bottom:-35px;height:150px;background:#222b43;clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
-    .road:after{content:"";position:absolute;left:49%;top:8px;height:100%;border-left:2px dashed rgba(255,255,255,.6)}
+    .road:after{content:"";position:absolute;left:49%;top:8px;height:100%;border-left:2px dashed rgba(255,255,255,.65)}
     .runner{position:absolute;bottom:35px;left:49%;width:13px;height:31px;border-radius:8px 8px 4px 4px;background:#f3d6ad;box-shadow:0 -9px 0 -2px #20263d}
+
     .tag{font:10px "DM Mono",monospace;letter-spacing:.08em;color:var(--muted)}
-    .skill-pill{border:1px solid var(--line);background:var(--panel-alt);padding:10px 13px;border-radius:10px;color:var(--text);font-size:12px;font-weight:500;transition:.2s}
-    .skill-pill:hover{border-color:var(--blue)}
+    .skill-pill{border:1px solid var(--line);background:linear-gradient(145deg,var(--panel),var(--panel-alt));padding:10px 13px;border-radius:10px;color:var(--text);font-size:12px;font-weight:500;box-shadow:0 3px 10px rgba(15,23,42,.03);transition:.22s}
+    .skill-pill:hover{border-color:var(--blue);transform:translateY(-1px)}
+
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
-    .marquee{border-block:1px solid var(--line);background:var(--panel-alt);overflow:hidden}
+
+    .marquee{border-block:1px solid var(--line);background:linear-gradient(90deg,var(--panel-alt),rgba(99,102,241,.06),var(--panel-alt));overflow:hidden}
     .marquee-track{display:flex;gap:44px;width:max-content;animation:marquee 28s linear infinite}
     @keyframes marquee{to{transform:translateX(-50%)}}
+
     .mobile-menu{display:none}.mobile-menu.open{display:flex}
     .back-top{opacity:0;pointer-events:none;transition:.25s}.back-top.show{opacity:1;pointer-events:auto}
     @media(max-width:760px){
       .hero-title{font-size:clamp(2.6rem,11vw,4rem)}
       .project-preview{height:190px}
       .hero-visual{margin-top:10px}
-      .mobile-menu{position:fixed;top:78px;left:16px;right:16px;padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--panel);box-shadow:0 25px 60px rgba(0,0,0,.2);backdrop-filter:blur(20px);flex-direction:column;gap:6px;z-index:99}
+      .mobile-menu{position:fixed;top:78px;left:16px;right:16px;padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--panel);box-shadow:0 25px 60px rgba(0,0,0,.22);backdrop-filter:blur(20px);flex-direction:column;gap:6px;z-index:99}
       .mobile-menu a{padding:12px 16px;border-radius:10px;font-weight:600}
       .mobile-menu a:hover{background:var(--panel-alt)}
     }
@@ -158,7 +204,7 @@
   <header class="fixed top-0 inset-x-0 z-50 nav-shell">
     <nav class="container h-[78px] flex items-center justify-between relative" aria-label="Main navigation">
       <a href="#home" class="flex items-center gap-3 font-extrabold tracking-[.12em] text-sm sm:text-base group">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm tracking-wider shadow-md transition duration-300 border border-[var(--line)]" style="background-color: var(--logo-bg); color: var(--logo-text);">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center font-black text-sm tracking-wider shadow-md transition duration-300 border border-[var(--line)]" style="background: var(--logo-bg); color: var(--logo-text);">
           AF
         </div>
         <span>AHMED <span class="text-slate-500 dark:text-slate-400">FATHY</span></span>
@@ -174,7 +220,7 @@
         <div class="hidden md:flex items-center gap-2">
           <!-- زر واتساب في الهيدر -->
           <a class="btn btn-secondary !py-2.5 !px-3" href="https://wa.me/201035153618" target="_blank" rel="noopener noreferrer" title="WhatsApp">
-            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.359 5l-1.422 5.188 5.313-1.391c1.469.797 3.109 1.219 4.719 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-10.015-9.969-10.015zm5.828 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-.984-.328-1.688-.641-2.969-1.281-4.906-4.266-5.063-4.469-.141-.203-1.203-1.594-1.203-3.047s.766-2.156 1.031-2.453c.266-.297.578-.375.766-.375.188 0 .375.016.547.016.188 0 .422-.063.656.5.25.594.828 2.016.906 2.172.078.156.125.328.016.531-.094.203-.156.328-.313.516-.156.188-.328.406-.469.547-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.781-.906.984-1.219.203-.313.422-.266.703-.156.281.109 1.797.844 2.109 1 .313.156.516.234.594.375.078.141.078.813-.172 1.516z"/></svg>
           </a>
           <!-- زر جيميل في الهيدر -->
           <a class="btn btn-secondary !py-2.5 !px-3" href="mailto:ahmadfathi561@gmail.com" title="Gmail">
@@ -201,8 +247,8 @@
 
   <main>
     <section id="home" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      <div class="hero-orb w-[520px] h-[520px] bg-blue-500/20 dark:bg-blue-600 top-[-90px] right-[-100px]"></div>
-      <div class="hero-orb w-[420px] h-[420px] bg-cyan-400/20 dark:bg-cyan-500 bottom-[-160px] left-[25%] opacity-10"></div>
+      <div class="hero-orb w-[540px] h-[540px] bg-indigo-500/25 dark:bg-indigo-600 top-[-100px] right-[-110px]"></div>
+      <div class="hero-orb w-[440px] h-[440px] bg-cyan-400/25 dark:bg-cyan-500 bottom-[-160px] left-[22%]"></div>
       <div class="container grid lg:grid-cols-[1.08fr_.92fr] gap-12 items-center relative z-10">
         <div class="reveal">
           <div class="eyebrow mb-7"><span class="eyebrow-dot"></span> Independent Developer · Open to Projects</div>
@@ -221,36 +267,39 @@
         <div class="reveal delay-2 relative">
           <div class="hero-visual p-5 sm:p-6">
             <div class="relative z-10 flex items-center justify-between border-b border-[var(--line)] pb-4 mb-5">
-              <div class="flex gap-1.5"><i class="w-2.5 h-2.5 rounded-full bg-rose-400"></i><i class="w-2.5 h-2.5 rounded-full bg-amber-400"></i><i class="w-2.5 h-2.5 rounded-full bg-emerald-400"></i></div>
+              <div class="flex gap-1.5"><i class="w-2.5 h-2.5 rounded-full bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,.6)]"></i><i class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,.6)]"></i><i class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,.6)]"></i></div>
               <span class="tag">AHMEDFATHY / WORKSPACE</span><span class="tag text-emerald-600 dark:text-emerald-300 font-semibold">● LIVE</span>
             </div>
             <div class="relative z-10">
-              <div class="flex items-end justify-between mb-5"><div><p class="tag mb-2">DIGITAL PRODUCT DESIGN</p><h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Build something<br><span class="gradient-text">remarkable.</span></h2></div><div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 grid place-items-center text-[var(--blue)]"><i data-lucide="command" class="w-6 h-6"></i></div></div>
-              <div class="rounded-2xl border border-[var(--line)] bg-[var(--panel-alt)] p-4 sm:p-5">
-                <div class="flex justify-between items-center mb-4"><span class="tag">SELECTED PROJECTS</span><span class="tag">01 — 03</span></div>
-                <a href="https://ahmadfathi561-collab.github.io/El_Tohammy1/" target="_blank" rel="noopener noreferrer" class="float-card flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] mb-2 hover:border-blue-500 transition shadow-sm">
+              <div class="flex items-end justify-between mb-5"><div><p class="tag mb-2">DIGITAL PRODUCT DESIGN</p><h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Build something<br><span class="gradient-text">remarkable.</span></h2></div><div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/15 to-cyan-500/15 border border-indigo-500/25 grid place-items-center text-[var(--blue)] shadow-sm"><i data-lucide="command" class="w-6 h-6"></i></div></div>
+              <div class="rounded-2xl border border-[var(--line)] bg-[var(--panel-alt)]/90 p-4 sm:p-5 backdrop-blur-sm">
+                <div class="flex justify-between items-center mb-4"><span class="tag">SELECTED PROJECTS</span><span class="tag">01 — 04</span></div>
+                <a href="https://ahmadfathi561-collab.github.io/Ai_Agent/" target="_blank" rel="noopener noreferrer" class="float-card flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] mb-2 hover:border-violet-500 transition shadow-sm">
+                  <span class="w-10 h-10 rounded-xl bg-violet-500/15 text-violet-600 dark:text-violet-400 grid place-items-center"><i data-lucide="bot" class="w-5 h-5"></i></span><span class="flex-1"><b class="block text-sm">AI Operations Agent</b><small class="text-[var(--muted)]">Autonomous support & order sync</small></span><i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--muted)]"></i>
+                </a>
+                <a href="https://ahmadfathi561-collab.github.io/El_Tohammy1/" target="_blank" rel="noopener noreferrer" class="float-card delay flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] mb-2 hover:border-blue-500 transition shadow-sm">
                   <span class="w-10 h-10 rounded-xl bg-blue-500/15 text-[var(--blue)] grid place-items-center"><i data-lucide="gauge" class="w-5 h-5"></i></span><span class="flex-1"><b class="block text-sm">El Tohammy Pro</b><small class="text-[var(--muted)]">Showroom management system</small></span><i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--muted)]"></i>
                 </a>
-                <a href="https://ahmadfathi561-collab.github.io/AURORA/" target="_blank" rel="noopener noreferrer" class="float-card delay flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] mb-2 hover:border-cyan-500 transition shadow-sm">
+                <a href="https://ahmadfathi561-collab.github.io/AURORA/" target="_blank" rel="noopener noreferrer" class="float-card flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] mb-2 hover:border-cyan-500 transition shadow-sm">
                   <span class="w-10 h-10 rounded-xl bg-cyan-500/10 text-[var(--cyan)] grid place-items-center"><i data-lucide="shopping-bag" class="w-5 h-5"></i></span><span class="flex-1"><b class="block text-sm">AURORA</b><small class="text-[var(--muted)]">E-commerce concept</small></span><i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--muted)]"></i>
                 </a>
-                <a href="https://sunset-escape-endless-run.vercel.app/" target="_blank" rel="noopener noreferrer" class="float-card flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] hover:border-purple-500 transition shadow-sm">
+                <a href="https://sunset-escape-endless-run.vercel.app/" target="_blank" rel="noopener noreferrer" class="float-card delay flex items-center gap-3 p-3 rounded-xl bg-[var(--panel)] border border-[var(--line)] hover:border-purple-500 transition shadow-sm">
                   <span class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-300 grid place-items-center"><i data-lucide="gamepad-2" class="w-5 h-5"></i></span><span class="flex-1"><b class="block text-sm">Sunset Escape</b><small class="text-[var(--muted)]">Interactive browser game</small></span><i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--muted)]"></i>
                 </a>
               </div>
               <div class="flex items-center justify-between mt-4 text-[10px] text-[var(--muted)]"><span class="tag">THINK · DESIGN · DEVELOP</span><span>CRAFTED FOR THE WEB ↗</span></div>
             </div>
           </div>
-          <div class="absolute -z-10 -right-5 -bottom-7 w-36 h-36 border border-cyan-400/20 rounded-full"></div>
-          <div class="absolute -z-10 -left-7 top-16 w-20 h-20 border border-blue-400/20 rounded-2xl rotate-12"></div>
+          <div class="absolute -z-10 -right-5 -bottom-7 w-36 h-36 border border-cyan-400/30 rounded-full"></div>
+          <div class="absolute -z-10 -left-7 top-16 w-20 h-20 border border-indigo-400/30 rounded-2xl rotate-12"></div>
         </div>
       </div>
     </section>
 
     <div class="marquee py-4">
       <div class="marquee-track tag">
-        <span>WEB DESIGN</span><span>✳</span><span>FRONTEND DEVELOPMENT</span><span>✳</span><span>E-COMMERCE</span><span>✳</span><span>CUSTOM WEB SYSTEMS</span><span>✳</span><span>UI / UX</span><span>✳</span>
-        <span>WEB DESIGN</span><span>✳</span><span>FRONTEND DEVELOPMENT</span><span>✳</span><span>E-COMMERCE</span><span>✳</span><span>CUSTOM WEB SYSTEMS</span><span>✳</span><span>UI / UX</span><span>✳</span>
+        <span>WEB DESIGN</span><span>✳</span><span>FRONTEND DEVELOPMENT</span><span>✳</span><span>AI AGENTS & AUTOMATION</span><span>✳</span><span>E-COMMERCE</span><span>✳</span><span>CUSTOM WEB SYSTEMS</span><span>✳</span><span>UI / UX</span><span>✳</span>
+        <span>WEB DESIGN</span><span>✳</span><span>FRONTEND DEVELOPMENT</span><span>✳</span><span>AI AGENTS & AUTOMATION</span><span>✳</span><span>E-COMMERCE</span><span>✳</span><span>CUSTOM WEB SYSTEMS</span><span>✳</span><span>UI / UX</span><span>✳</span>
       </div>
     </div>
 
@@ -261,12 +310,12 @@
           <p class="muted max-w-sm leading-7 text-sm">From a clear online presence to a tailored business platform, every build starts with understanding the problem.</p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <article class="surface service-card rounded-2xl p-7 reveal"><div class="icon-box mb-6"><i data-lucide="panels-top-left"></i></div><p class="tag mb-3">01 / PRESENCE</p><h3 class="text-lg font-bold mb-3">Business Websites</h3><p class="muted text-sm leading-7">Professional websites that establish credibility, express your brand, and make your services easy to understand.</p></article>
-          <article class="surface service-card rounded-2xl p-7 reveal delay-1"><div class="icon-box mb-6"><i data-lucide="shopping-cart"></i></div><p class="tag mb-3">02 / COMMERCE</p><h3 class="text-lg font-bold mb-3">E-Commerce Websites</h3><p class="muted text-sm leading-7">Online stores with thoughtful product presentation, intuitive browsing, and smooth shopping journeys.</p></article>
-          <article class="surface service-card rounded-2xl p-7 reveal delay-2"><div class="icon-box mb-6"><i data-lucide="settings-2"></i></div><p class="tag mb-3">03 / OPERATIONS</p><h3 class="text-lg font-bold mb-3">Custom Business Systems</h3><p class="muted text-sm leading-7">Purpose-built web applications that help organize information, manage workflows, and simplify daily operations.</p></article>
-          <article class="surface service-card rounded-2xl p-7 reveal"><div class="icon-box mb-6"><i data-lucide="store"></i></div><p class="tag mb-3">04 / SHOWCASE</p><h3 class="text-lg font-bold mb-3">Showroom & Real Estate</h3><p class="muted text-sm leading-7">Visual-first experiences for showrooms, property businesses, furniture brands, and product catalogs.</p></article>
-          <article class="surface service-card rounded-2xl p-7 reveal delay-1"><div class="icon-box mb-6"><i data-lucide="mouse-pointer-click"></i></div><p class="tag mb-3">05 / CAMPAIGNS</p><h3 class="text-lg font-bold mb-3">Landing Pages</h3><p class="muted text-sm leading-7">Focused pages that communicate one clear message, highlight an offer, and encourage meaningful action.</p></article>
-          <article class="surface service-card rounded-2xl p-7 reveal delay-2"><div class="icon-box mb-6"><i data-lucide="refresh-cw"></i></div><p class="tag mb-3">06 / IMPROVEMENT</p><h3 class="text-lg font-bold mb-3">Website Redesign</h3><p class="muted text-sm leading-7">A considered refresh for outdated websites, improving clarity, usability, responsiveness, and visual quality.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal"><div class="icon-box mb-6 text-blue-600 dark:text-blue-400"><i data-lucide="panels-top-left"></i></div><p class="tag mb-3">01 / PRESENCE</p><h3 class="text-lg font-bold mb-3">Business Websites</h3><p class="muted text-sm leading-7">Professional websites that establish credibility, express your brand, and make your services easy to understand.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal delay-1"><div class="icon-box mb-6 text-cyan-600 dark:text-cyan-400"><i data-lucide="shopping-cart"></i></div><p class="tag mb-3">02 / COMMERCE</p><h3 class="text-lg font-bold mb-3">E-Commerce Websites</h3><p class="muted text-sm leading-7">Online stores with thoughtful product presentation, intuitive browsing, and smooth shopping journeys.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal delay-2"><div class="icon-box mb-6 text-indigo-600 dark:text-indigo-400"><i data-lucide="settings-2"></i></div><p class="tag mb-3">03 / OPERATIONS</p><h3 class="text-lg font-bold mb-3">Custom Business Systems</h3><p class="muted text-sm leading-7">Purpose-built web applications that help organize information, manage workflows, and simplify daily operations.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal"><div class="icon-box mb-6 text-violet-600 dark:text-violet-400"><i data-lucide="store"></i></div><p class="tag mb-3">04 / SHOWCASE</p><h3 class="text-lg font-bold mb-3">Showroom & Real Estate</h3><p class="muted text-sm leading-7">Visual-first experiences for showrooms, property businesses, furniture brands, and product catalogs.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal delay-1"><div class="icon-box mb-6 text-sky-600 dark:text-sky-400"><i data-lucide="mouse-pointer-click"></i></div><p class="tag mb-3">05 / CAMPAIGNS</p><h3 class="text-lg font-bold mb-3">Landing Pages</h3><p class="muted text-sm leading-7">Focused pages that communicate one clear message, highlight an offer, and encourage meaningful action.</p></article>
+          <article class="surface service-card rounded-2xl p-7 reveal delay-2"><div class="icon-box mb-6 text-emerald-600 dark:text-emerald-400"><i data-lucide="refresh-cw"></i></div><p class="tag mb-3">06 / IMPROVEMENT</p><h3 class="text-lg font-bold mb-3">Website Redesign</h3><p class="muted text-sm leading-7">A considered refresh for outdated websites, improving clarity, usability, responsiveness, and visual quality.</p></article>
         </div>
       </div>
     </section>
@@ -281,7 +330,7 @@
           <article class="surface project-card rounded-2xl reveal">
             <div class="project-preview">
               <div class="preview-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="mock-layout"><div class="mock-sidebar"><b></b><b></b><b></b><b></b><b></b></div><div class="mock-main"><div class="mock-heading"></div><div class="mock-sub"></div><div class="mock-stats"><span></span><span></span><span></span></div><div class="mock-chart"></div></div></div></div>
-              <span class="absolute top-4 right-4 tag bg-black/60 text-white backdrop-blur border border-white/10 rounded-full px-3 py-1.5">BUSINESS SYSTEM</span>
+              <span class="absolute top-4 right-4 tag bg-slate-950/75 text-white backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 shadow-sm">BUSINESS SYSTEM</span>
             </div>
             <div class="p-6 sm:p-7">
               <div class="flex items-center justify-between gap-3 mb-3"><span class="tag text-[var(--blue)]">01 / MANAGEMENT</span><span class="text-[10px] text-[var(--muted)]">CUSTOM SYSTEM</span></div>
@@ -291,10 +340,11 @@
               <a class="inline-flex items-center gap-2 mt-7 text-sm font-bold text-[var(--blue)] hover:opacity-85 transition" href="https://ahmadfathi561-collab.github.io/El_Tohammy1/" target="_blank" rel="noopener noreferrer">Explore live project <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </div>
           </article>
+
           <article class="surface project-card rounded-2xl reveal delay-1">
             <div class="project-preview aurora-preview">
               <div class="preview-window"><div class="window-bar"><i></i><i></i><i></i></div><div class="aurora-layout"><div class="aurora-nav"><b>A U R O R A</b><span>COLLECTION&nbsp;&nbsp; ABOUT&nbsp;&nbsp; BAG</span></div><div class="aurora-copy">Objects for<br>everyday living<small>CURATED DESIGN · TIMELESS FORM</small></div><div class="aurora-product"></div></div></div>
-              <span class="absolute top-4 right-4 tag bg-black/60 text-white backdrop-blur border border-white/10 rounded-full px-3 py-1.5">E-COMMERCE</span>
+              <span class="absolute top-4 right-4 tag bg-slate-950/75 text-white backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 shadow-sm">E-COMMERCE</span>
             </div>
             <div class="p-6 sm:p-7">
               <div class="flex items-center justify-between gap-3 mb-3"><span class="tag text-[var(--cyan)]">02 / COMMERCE</span><span class="text-[10px] text-[var(--muted)]">CONCEPT PROJECT</span></div>
@@ -304,18 +354,44 @@
               <a class="inline-flex items-center gap-2 mt-7 text-sm font-bold text-[var(--cyan)] hover:opacity-85 transition" href="https://ahmadfathi561-collab.github.io/AURORA/" target="_blank" rel="noopener noreferrer">Explore live store <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </div>
           </article>
-          <article class="surface project-card rounded-2xl lg:col-span-2 reveal">
-            <div class="grid md:grid-cols-[1fr_1fr]">
-              <div class="project-preview game-preview min-h-[220px] md:min-h-[280px]">
-                <div class="game-scene"><div class="sun"></div><div class="road"></div><div class="runner"></div></div>
-                <span class="absolute top-4 right-4 tag bg-black/60 text-white backdrop-blur border border-white/10 rounded-full px-3 py-1.5">INTERACTIVE EXPERIENCE</span>
+
+          <article class="surface project-card rounded-2xl reveal">
+            <div class="project-preview ai-preview">
+              <div class="preview-window">
+                <div class="window-bar"><i></i><i></i><i></i></div>
+                <div class="ai-layout">
+                  <div class="ai-chat">
+                    <div class="ai-bubble ai-user">Can I add an item to my existing order?</div>
+                    <div class="ai-bubble ai-bot">Verified #ORD-842. Item added & dashboard updated.</div>
+                  </div>
+                  <div class="ai-sync">
+                    <span class="ai-badge">SYNCED</span>
+                    <div class="ai-rows"><span></span><span></span><span></span></div>
+                  </div>
+                </div>
               </div>
-              <div class="p-6 sm:p-8 flex flex-col justify-center">
-                <div class="flex items-center justify-between gap-3 mb-3"><span class="tag text-purple-600 dark:text-purple-400">03 / CREATIVE DEVELOPMENT</span><span class="text-[10px] text-[var(--muted)]">PLAYABLE</span></div>
-                <h3 class="text-2xl font-extrabold tracking-tight">SUNSET ESCAPE</h3>
-                <p class="muted text-sm leading-7 mt-3">An interactive 3D endless-runner gaming experience created to explore gameplay interaction, browser-based physics, and creative development.</p>
-                <a class="inline-flex items-center gap-2 mt-7 text-sm font-bold text-purple-600 dark:text-purple-400 hover:opacity-85 transition" href="https://sunset-escape-endless-run.vercel.app/" target="_blank" rel="noopener noreferrer">Play the experience <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-              </div>
+              <span class="absolute top-4 right-4 tag bg-slate-950/75 text-white backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 shadow-sm">AI OPERATIONS</span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-3 mb-3"><span class="tag text-violet-600 dark:text-violet-400">03 / AI & AUTOMATION</span><span class="text-[10px] text-[var(--muted)]">LIVE SYSTEM</span></div>
+              <h3 class="text-2xl font-extrabold tracking-tight">AI OPERATIONS AGENT</h3>
+              <p class="muted text-sm leading-7 mt-3 max-w-xl">An autonomous customer support agent that analyzes requests, plans actions, and executes live dashboard operations—handling bookings, modifications, cancellations, holds, complaints, and instant order follow-ups.</p>
+              <div class="flex flex-wrap gap-2 mt-5"><span class="skill-pill">AI Agent</span><span class="skill-pill">Live Dashboard</span><span class="skill-pill">Order Automation</span></div>
+              <a class="inline-flex items-center gap-2 mt-7 text-sm font-bold text-violet-600 dark:text-violet-400 hover:opacity-85 transition" href="https://ahmadfathi561-collab.github.io/Ai_Agent/" target="_blank" rel="noopener noreferrer">Explore live agent <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+            </div>
+          </article>
+
+          <article class="surface project-card rounded-2xl reveal delay-1">
+            <div class="project-preview game-preview">
+              <div class="game-scene"><div class="sun"></div><div class="road"></div><div class="runner"></div></div>
+              <span class="absolute top-4 right-4 tag bg-slate-950/75 text-white backdrop-blur-md border border-white/15 rounded-full px-3 py-1.5 shadow-sm">INTERACTIVE EXPERIENCE</span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <div class="flex items-center justify-between gap-3 mb-3"><span class="tag text-purple-600 dark:text-purple-400">04 / CREATIVE DEVELOPMENT</span><span class="text-[10px] text-[var(--muted)]">PLAYABLE</span></div>
+              <h3 class="text-2xl font-extrabold tracking-tight">SUNSET ESCAPE</h3>
+              <p class="muted text-sm leading-7 mt-3 max-w-xl">An interactive 3D endless-runner gaming experience created to explore gameplay interaction, browser-based physics, and creative development.</p>
+              <div class="flex flex-wrap gap-2 mt-5"><span class="skill-pill">3D Web Game</span><span class="skill-pill">Browser Physics</span><span class="skill-pill">Interactive UX</span></div>
+              <a class="inline-flex items-center gap-2 mt-7 text-sm font-bold text-purple-600 dark:text-purple-400 hover:opacity-85 transition" href="https://sunset-escape-endless-run.vercel.app/" target="_blank" rel="noopener noreferrer">Play the experience <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
             </div>
           </article>
         </div>
@@ -332,7 +408,7 @@
           <a href="https://airtable.com/appNPUYOT6lgHF4NH/pagFdwduK8s9TVuHR/form" target="_blank" rel="noopener noreferrer" class="btn btn-secondary mt-7">Have a project in mind? <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
         </div>
         <div class="surface rounded-2xl p-6 sm:p-8 reveal delay-1">
-          <div class="flex items-center justify-between mb-7"><div><p class="tag mb-2">MY TOOLKIT</p><h3 class="text-xl font-bold">Core expertise</h3></div><div class="icon-box"><i data-lucide="code-2"></i></div></div>
+          <div class="flex items-center justify-between mb-7"><div><p class="tag mb-2">MY TOOLKIT</p><h3 class="text-xl font-bold">Core expertise</h3></div><div class="icon-box text-[var(--blue)]"><i data-lucide="code-2"></i></div></div>
           <div class="space-y-6">
             <div><div class="flex justify-between text-sm mb-3"><b>Frontend Development</b><span class="tag">01</span></div><div class="flex flex-wrap gap-2"><span class="skill-pill">JavaScript</span><span class="skill-pill">React</span><span class="skill-pill">Tailwind CSS</span></div></div>
             <div class="h-px bg-[var(--line)]"></div>
@@ -340,7 +416,7 @@
             <div class="h-px bg-[var(--line)]"></div>
             <div><div class="flex justify-between text-sm mb-3"><b>Digital Solutions</b><span class="tag">03</span></div><div class="flex flex-wrap gap-2"><span class="skill-pill">Business Websites</span><span class="skill-pill">E-Commerce</span><span class="skill-pill">Custom Web Systems</span></div></div>
           </div>
-          <div class="mt-9 rounded-xl bg-blue-500/10 border border-blue-500/20 p-4 flex gap-3 items-start"><i data-lucide="lightbulb" class="w-5 h-5 text-[var(--blue)] shrink-0 mt-0.5"></i><p class="text-xs text-[var(--muted)] leading-6">I focus on building digital experiences that balance visual quality with real-world usability.</p></div>
+          <div class="mt-9 rounded-xl bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10 border border-indigo-500/20 p-4 flex gap-3 items-start"><i data-lucide="lightbulb" class="w-5 h-5 text-[var(--blue)] shrink-0 mt-0.5"></i><p class="text-xs text-[var(--muted)] leading-6">I focus on building digital experiences that balance visual quality with real-world usability.</p></div>
         </div>
       </div>
     </section>
@@ -372,7 +448,7 @@
           <a href="https://wa.me/201035153618" target="_blank" rel="noopener noreferrer" class="surface service-card rounded-2xl p-7 reveal delay-1 flex flex-col justify-between hover:border-emerald-500 group">
             <div>
               <div class="icon-box mb-6 bg-emerald-500/10 text-emerald-500 group-hover:scale-110 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.359 5l-1.422 5.188 5.313-1.391c1.469.797 3.109 1.219 4.719 1.219 5.516 0 9.969-4.453 9.969-9.969s-4.453-10.015-9.969-10.015zm5.828 14.125c-.25.703-1.438 1.344-1.984 1.422-.516.078-1.156.109-1.859-.109-.438-.141-.984-.328-1.688-.641-2.969-1.281-4.906-4.266-5.063-4.469-.141-.203-1.203-1.594-1.203-3.047s.766-2.156 1.031-2.453c.266-.297.578-.375.766-.375.188 0 .375.016.547.016.188 0 .422-.063.656.5.25.594.828 2.016.906 2.172.078.156.125.328.016.531-.094.203-.156.328-.313.516-.156.188-.328.406-.469.547-.156.156-.328.328-.141.641.188.313.844 1.391 1.813 2.25 1.25 1.109 2.297 1.453 2.609 1.609.313.156.5.125.688-.078.188-.203.781-.906.984-1.219.203-.313.422-.266.703-.156.281.109 1.797.844 2.109 1 .313.156.516.234.594.375.078.141.078.813-.172 1.516z"/></svg>
               </div>
               <p class="tag mb-2 text-emerald-500">DIRECT CHAT</p>
               <h3 class="text-lg font-bold mb-2">WhatsApp</h3>
@@ -412,16 +488,16 @@
 
     <section class="pb-24 sm:pb-32 pt-12">
       <div class="container">
-        <div class="relative overflow-hidden rounded-3xl border border-blue-500/20 bg-gradient-to-br from-blue-900 via-slate-900 to-slate-950 text-white p-8 sm:p-12 reveal shadow-2xl">
-          <div class="absolute -right-16 -top-28 w-80 h-80 rounded-full bg-blue-500/20 blur-[80px]"></div>
-          <div class="absolute right-[25%] -bottom-36 w-72 h-72 rounded-full bg-cyan-400/10 blur-[80px]"></div>
+        <div class="relative overflow-hidden rounded-3xl border border-indigo-400/25 bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white p-8 sm:p-12 reveal shadow-2xl">
+          <div class="absolute -right-16 -top-28 w-80 h-80 rounded-full bg-indigo-500/25 blur-[85px]"></div>
+          <div class="absolute right-[25%] -bottom-36 w-72 h-72 rounded-full bg-cyan-400/15 blur-[85px]"></div>
           <div class="relative z-10 max-w-3xl">
             <p class="section-kicker mb-4 text-cyan-300">LET’S BUILD SOMETHING USEFUL</p>
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Have an idea?<br><span class="bg-gradient-to-r from-white via-blue-200 to-cyan-300 bg-clip-text text-transparent">Let’s make it happen.</span></h2>
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">Have an idea?<br><span class="bg-gradient-to-r from-white via-indigo-200 to-cyan-300 bg-clip-text text-transparent">Let’s make it happen.</span></h2>
             <p class="text-slate-300 text-sm sm:text-base leading-7 mt-5 max-w-xl">Tell me what you’re working on. Share your requirements through the project form and let’s explore the right digital solution for your business.</p>
             <div class="flex flex-wrap gap-4 mt-8">
               <a href="https://airtable.com/appNPUYOT6lgHF4NH/pagFdwduK8s9TVuHR/form" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Start a Project (Airtable) <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
-              <a href="https://wa.me/201035153618" target="_blank" rel="noopener noreferrer" class="btn bg-emerald-600 text-white hover:bg-emerald-700">WhatsApp Chat <span class="text-sm">💬</span></a>
+              <a href="https://wa.me/201035153618" target="_blank" rel="noopener noreferrer" class="btn bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">WhatsApp Chat <span class="text-sm">💬</span></a>
             </div>
           </div>
         </div>
@@ -432,7 +508,7 @@
   <footer class="border-t border-[var(--line)] py-8">
     <div class="container flex flex-col sm:flex-row gap-4 items-center justify-between">
       <a href="#home" class="font-extrabold tracking-[.12em] text-sm flex items-center gap-2">
-        <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs" style="background-color: var(--logo-bg); color: var(--logo-text);">AF</span>
+        <span class="w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs" style="background: var(--logo-bg); color: var(--logo-text);">AF</span>
         AHMED <span class="text-[var(--muted)]">FATHY</span>
       </a>
       <div class="flex items-center gap-4 text-xs text-[var(--muted)]">
@@ -458,11 +534,11 @@
       if (isDark) {
         htmlEl.classList.add('dark');
         localStorage.setItem('theme', 'dark');
-        metaThemeColor.setAttribute('content', '#080b12');
+        metaThemeColor.setAttribute('content', '#060913');
       } else {
         htmlEl.classList.remove('dark');
         localStorage.setItem('theme', 'light');
-        metaThemeColor.setAttribute('content', '#f4f7fc');
+        metaThemeColor.setAttribute('content', '#f5f8ff');
       }
     };
 
